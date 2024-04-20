@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "legacytranslations",
+  "version": "${version}",
+
+  "name": "LegacyTranslations",
+  "description": "This mod adds custom language loading capabilities to the game. Rather than the hardcoded and static language list that Mojang's modern Minecraft provides the player, the Translation System has a custom language system much the same as texturepacks.",
+  "authors": [
+    "Telvarost",
+    "Vivian",
+    "Birevan",
+    "Roadhog360",
+    "icanttellyou"
+  ],
+  "contact": {
+    "issues": "https://github.com/telvarost/LegacyTranslations-StationAPI/issues",
+    "homepage": "https://github.com/telvarost/LegacyTranslations-StationAPI/",
+    "sources": "https://github.com/telvarost/LegacyTranslations-StationAPI/"
+  },
+
+  "license": "MIT",
+  "icon": "assets/legacytranslations/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "stationapi:event_bus": [
+    ],
+    "stationapi:event_bus_client": [
+    ],
+    "stationapi:event_bus_server": [
+    ],
+    "gcapi": [
+      "com.github.telvarost.legacytranslations.Config"
+    ]
+  },
+  "mixins": [
+    "legacytranslations.mixins.json"
+  ],
+
+  "depends": {
+    "minecraft": "1.0.0-beta.7.3"
+  },
+
+  "custom": {
+    "modmenu:clientsideOnly": true
+  }
+}
