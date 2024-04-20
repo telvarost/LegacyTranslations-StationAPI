@@ -1,5 +1,7 @@
 # LegacyTranslations for Minecraft Beta 1.7.3
 
+## This mod is not approved or completed yet
+
 ### Addon Credits
 * @Roadhog360 - Initially creating the Legacy Translation System for New Frontier Craft
 * @Birevan - The foundation and inspiration for the creation of this addon, alongside the source of many of the internal textures and files that let it function
