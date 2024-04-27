@@ -8,7 +8,10 @@
   "server": [
   ],
   "client": [
-    "ProgressListenerImplMixin"
+    "MainMenuMixin",
+    "PauseMixin",
+    "ProgressListenerImplMixin",
+    "TextRenderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

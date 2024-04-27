@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ProgressListenerImpl.class)
 @Environment(EnvType.CLIENT)
+@Mixin(ProgressListenerImpl.class)
 public abstract class ProgressListenerImplMixin implements ProgressListener {
 
     @Shadow private String message;
