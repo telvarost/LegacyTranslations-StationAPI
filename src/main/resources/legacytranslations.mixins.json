@@ -10,7 +10,8 @@
   "client": [
     "MainMenuMixin",
     "PauseMixin",
-    "ProgressListenerImplMixin"
+    "ProgressListenerImplMixin",
+    "TextRenderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

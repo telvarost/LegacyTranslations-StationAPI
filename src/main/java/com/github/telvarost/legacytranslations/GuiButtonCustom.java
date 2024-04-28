@@ -67,7 +67,7 @@ public class GuiButtonCustom extends Button {
                     / 2, y + (height - 8) / 2, enabledColour);
         }
         if(customIcon > -1) {
-            GL11.glBindTexture(3553 /* GL_TEXTURE_2D */, minecraft.textureManager.getTextureId("/assets/minecraft/icons.png"));
+            GL11.glBindTexture(3553 /* GL_TEXTURE_2D */, minecraft.textureManager.getTextureId("/assets/legacytranslations/icons.png"));
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             blit(x, y, (customIcon % 12) * 20, (customIcon / 12) * 20, 20, 20);
         }
