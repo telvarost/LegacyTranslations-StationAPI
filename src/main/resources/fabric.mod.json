@@ -23,15 +23,6 @@
 
   "environment": "client",
   "entrypoints": {
-    "stationapi:event_bus": [
-    ],
-    "stationapi:event_bus_client": [
-    ],
-    "stationapi:event_bus_server": [
-    ],
-    "gcapi": [
-      "com.github.telvarost.legacytranslations.Config"
-    ]
   },
   "mixins": [
     "legacytranslations.mixins.json"
