@@ -2,6 +2,7 @@ package com.github.telvarost.legacytranslations.mixin;
 
 import com.github.telvarost.legacytranslations.GuiButtonCustom;
 import com.github.telvarost.legacytranslations.GuiLanguagePacks;
+import com.github.telvarost.legacytranslations.ModHelper;
 import net.minecraft.client.gui.screen.ScreenBase;
 import net.minecraft.client.gui.screen.menu.*;
 import net.minecraft.client.gui.widgets.Button;
@@ -64,13 +65,15 @@ public class MainMenuMixin extends ScreenBase {
             constant = @Constant(stringValue = "Copyright Mojang AB. Do not distribute.")
     )
     public String init_translateBackToGame(String def) {
-        return I18n.translate("menu.copyright");
+        TranslationStorage stringTranslate = TranslationStorage.getInstance();
+        return stringTranslate.translate("menu.copyright");
     }
 
     @Inject(method = "init", at = @At("RETURN"), cancellable = true)
     public void init(CallbackInfo ci) {
         int i = this.height / 4 + 48;
         buttons.add(new GuiButtonCustom(5, width / 2 + 104, i + 48, 20, 20, I18n.translate(""), true, 0));
+        ModHelper.reloadKeys();
     }
 
     @Inject(method = "buttonClicked", at = @At("RETURN"), cancellable = true)
