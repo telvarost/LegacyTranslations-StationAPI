@@ -56,7 +56,7 @@ public abstract class TextRenderMixin {
             method = "<init>",
             at = @At("RETURN")
     )
-    private void constructor(GameOptions options, String texString, TextureManager renderengine, CallbackInfo ci) {
+    private void TextRenderMixin(GameOptions options, String texString, TextureManager renderengine, CallbackInfo ci) {
         field_2462 = new int[CharacterUtils.validCharacters.length()];
         field_2461 = 0;
         field_2464 = class_214.method_745(1024 /*GL_FRONT_LEFT*/);
