@@ -34,7 +34,7 @@ public class GuiLanguagePacks extends ScreenBase {
         buttons.add(new OptionButton(6, width / 2 + 4, height - 48,
                 stringtranslate.translate("gui.done")));
         packlist = new LanguagePackList(minecraft, Minecraft.getGameDirectory());
-        //packlist.updateAvaliableLanguagePacks();
+        packlist.updateAvaliableLanguagePacks();
         guiLanguagePackSlot = new GuiLanguagePackSlot(this);
         guiLanguagePackSlot.registerButtons(buttons, 7, 8);
     }

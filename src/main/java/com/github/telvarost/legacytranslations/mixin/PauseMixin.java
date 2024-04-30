@@ -11,13 +11,47 @@ import net.minecraft.client.gui.widgets.Button;
 import net.minecraft.client.resource.language.I18n;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Environment(EnvType.CLIENT)
 @Mixin(Pause.class)
 public class PauseMixin extends ScreenBase {
     public PauseMixin() { }
+
+    @ModifyConstant(
+            method = "init",
+            constant = @Constant(stringValue = "Save and quit to title")
+    )
+    public String init_translateSaveAndQuit(String def) {
+        return I18n.translate("inGameMenu.saveAndQuitToTitle");
+    }
+
+    @ModifyConstant(
+            method = "init",
+            constant = @Constant(stringValue = "Disconnect")
+    )
+    public String init_translateDisconnect(String def) {
+        return I18n.translate("inGameMenu.disconnect");
+    }
+
+    @ModifyConstant(
+            method = "init",
+            constant = @Constant(stringValue = "Back to game")
+    )
+    public String init_translateBackToGame(String def) {
+        return I18n.translate("inGameMenu.backToGame");
+    }
+
+    @ModifyConstant(
+            method = "init",
+            constant = @Constant(stringValue = "Options...")
+    )
+    public String init_translateOptions(String def) {
+        return I18n.translate("menu.options");
+    }
 
     @Inject(method = "init", at = @At("RETURN"), cancellable = true)
     public void init(CallbackInfo ci) {
@@ -35,5 +69,21 @@ public class PauseMixin extends ScreenBase {
         if (arg.id == 8) {
             this.minecraft.openScreen(new GuiLanguagePacks(this));
         }
+    }
+
+    @ModifyConstant(
+            method = "render",
+            constant = @Constant(stringValue = "Saving level..")
+    )
+    public String render_translateSavingLevel(String def) {
+        return I18n.translate("inGameMenu.savingLevel");
+    }
+
+    @ModifyConstant(
+            method = "render",
+            constant = @Constant(stringValue = "Game menu")
+    )
+    public String render_translateGameMenu(String def) {
+        return I18n.translate("inGameMenu.gameMenu");
     }
 }
