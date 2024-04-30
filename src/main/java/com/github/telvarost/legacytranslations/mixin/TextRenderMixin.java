@@ -36,17 +36,18 @@ public abstract class TextRenderMixin {
 
     @Shadow public abstract void drawText(String string, int i, int j, int k, boolean bl);
 
-    @Unique private int charWidth[];
+    @Shadow private int[] field_2462 = new int[256]; // charWidth
+    @Shadow public int field_2461 = 0; // fontTextureName
+    @Shadow private int field_2463; // fontDisplayLists
+    @Shadow private IntBuffer field_2464 = class_214.method_745(1024); // buffer
+    
     @Unique private int res;
-    @Unique public int fontTextureName;
     @Unique public int fontTextureNames[];
     @Unique public String fontPngName;
     @Unique public int textureWidth;
     @Unique public int textureHeight;
     @Unique public int imageRGB[];
     @Unique public BufferedImage fontPng;
-    @Unique private int fontDisplayLists;
-    @Unique private IntBuffer buffer;
     @Unique private static final String colorChars = "0123456789abcdefgh";
 
     public TextRenderMixin(GameOptions arg, String string, TextureManager arg2) { }
@@ -56,9 +57,9 @@ public abstract class TextRenderMixin {
             at = @At("RETURN")
     )
     private void constructor(GameOptions options, String texString, TextureManager renderengine, CallbackInfo ci) {
-        charWidth = new int[CharacterUtils.validCharacters.length()];
-        fontTextureName = 0;
-        buffer = class_214.method_745(1024 /*GL_FRONT_LEFT*/);
+        field_2462 = new int[CharacterUtils.validCharacters.length()];
+        field_2461 = 0;
+        field_2464 = class_214.method_745(1024 /*GL_FRONT_LEFT*/);
         fontTextureNames = new int[(CharacterUtils.validCharacters.length() / 256) + 1];
         fontPngName = "";
         updateFontImage(0, renderengine, texString);
@@ -97,17 +98,17 @@ public abstract class TextRenderMixin {
             {
                 j2 = (textureWidth/64) + (textureWidth/128) - 1;
             }
-            charWidth[k] = (j2 + 2 + ((res/8) - 1)) / (res/8);
+            field_2462[k] = (j2 + 2 + ((res/8) - 1)) / (res/8);
         }
 
-        fontDisplayLists = class_214.method_741(288);
+        field_2463 = class_214.method_741(288);
         Tessellator tessellator = Tessellator.INSTANCE;
         for(int i1 = 0; i1 < CharacterUtils.validCharacters.length(); i1++)
         {
             updateFontImage(i1, renderengine, texString);
-            fontTextureName = getTextureId(i1, renderengine);
-            GL11.glNewList(fontDisplayLists + i1 + (i1 >= 256 ? 512 : 0), 4864 /*GL_COMPILE*/);
-            GL11.glBindTexture(3553, fontTextureName);
+            field_2461 = getTextureId(i1, renderengine);
+            GL11.glNewList(field_2463 + i1 + (i1 >= 256 ? 512 : 0), 4864 /*GL_COMPILE*/);
+            GL11.glBindTexture(3553, field_2461);
             int renderWidth = 128;
             tessellator.start();
             int l1 = (i1 % 16) * (renderWidth/16);
@@ -120,10 +121,10 @@ public abstract class TextRenderMixin {
             tessellator.vertex(0.0F + f, 0.0D, 0.0D, ((float)l1 + f) / (float)(renderWidth) + f1, (float)k2 / (float)(renderWidth) + f2);
             tessellator.vertex(0.0D, 0.0D, 0.0D, (float)l1 / (float)(renderWidth) + f1, (float)k2 / (float)(renderWidth) + f2);
             tessellator.draw();
-            GL11.glTranslatef(charWidth[i1], 0.0F, 0.0F);
+            GL11.glTranslatef(field_2462[i1], 0.0F, 0.0F);
             GL11.glEndList();
 //        	System.out.println(ChatAllowedCharacters.allowedCharacters.charAt(i1) + " ? " + ChatAllowedCharacters.isAllowedCharacter(ChatAllowedCharacters.allowedCharacters.charAt(i1)));
-//            System.out.println("Width of ID " + i1 + " (" + ChatAllowedCharacters.allowedCharacters.charAt(i1) + "): " + charWidth[i1] + " texID " + getTextureId(i1, renderengine) + " PNGID " + fontPng);
+//            System.out.println("Width of ID " + i1 + " (" + ChatAllowedCharacters.allowedCharacters.charAt(i1) + "): " + field_2462[i1] + " texID " + getTextureId(i1, renderengine) + " PNGID " + fontPng);
         }
 
         for(int j1 = 0; j1 < colorChars.length() * 2; j1++)
@@ -166,7 +167,7 @@ public abstract class TextRenderMixin {
                 j3 /= 4;
                 k3 /= 4;
             }
-            GL11.glNewList(fontDisplayLists + 256 + j1, 4864 /*GL_COMPILE*/);
+            GL11.glNewList(field_2463 + 256 + j1, 4864 /*GL_COMPILE*/);
             GL11.glColor3f((float)(l2 / 255F), (float)j3 / 255F, (float)k3 / 255F);
 //            Below commented line used to ensure the colour was outputted correctly
 //            System.out.println("Color values for value " + j1 + (flag1 ? "'s shadow" : "") + " are... Red: " + l2 + " Green: " + j3 + " Blue: " + k3);
@@ -246,7 +247,7 @@ public abstract class TextRenderMixin {
             f3 = 1.0F;
         }
         GL11.glColor4f(f, f1, f2, f3);
-        buffer.clear();
+        field_2464.clear();
         GL11.glPushMatrix();
         GL11.glTranslatef(i, j, 0.0F);
         for(int i1 = 0; i1 < s.length(); i1++)
@@ -272,12 +273,12 @@ public abstract class TextRenderMixin {
                 {
                     j1 = 15;
                 }
-                buffer.put(fontDisplayLists + 256 + j1 + (k1 * 16) + (flag ? j1 > 15 ? ((colorChars.length() - 16) / 2) + 1 : 16 : 0));
-                if(buffer.remaining() == 0)
+                field_2464.put(field_2463 + 256 + j1 + (k1 * 16) + (flag ? j1 > 15 ? ((colorChars.length() - 16) / 2) + 1 : 16 : 0));
+                if(field_2464.remaining() == 0)
                 {
-                    buffer.flip();
-                    GL11.glCallLists(buffer);
-                    buffer.clear();
+                    field_2464.flip();
+                    GL11.glCallLists(field_2464);
+                    field_2464.clear();
                 }
                 if(ch == 'g')
                     GL11.glColor4f(f, f1, f2, f3);
@@ -288,19 +289,20 @@ public abstract class TextRenderMixin {
                 int k1 = CharacterUtils.validCharacters.indexOf(s.charAt(i1));
                 if(k1 >= 0)
                 {
-                    buffer.put(fontDisplayLists + k1 + (k1 >= 256 ? 512 : 0));
+                    //k1 += 32;
+                    field_2464.put(field_2463 + k1 + (k1 >= 256 ? 512 : 0));
                 }
             }
-            if(buffer.remaining() == 0)
+            if(field_2464.remaining() == 0)
             {
-                buffer.flip();
-                GL11.glCallLists(buffer);
-                buffer.clear();
+                field_2464.flip();
+                GL11.glCallLists(field_2464);
+                field_2464.clear();
             }
         }
 
-        buffer.flip();
-        GL11.glCallLists(buffer);
+        field_2464.flip();
+        GL11.glCallLists(field_2464);
         GL11.glColor4f(1, 1, 1, 1);
         GL11.glPopMatrix();
         ci.cancel();
@@ -329,7 +331,7 @@ public abstract class TextRenderMixin {
             int k = CharacterUtils.validCharacters.indexOf(s.charAt(j));
             if(k >= 0)
             {
-                i += charWidth[k];
+                i += field_2462[k];
             }
         }
 
@@ -574,7 +576,7 @@ public abstract class TextRenderMixin {
             int var2 = CharacterUtils.validCharacters.indexOf(par1);
 
             if (par1 > 0 && var2 != -1) {
-                return this.charWidth[var2];
+                return this.field_2462[var2];
             } else {
                 return 0;
             }
