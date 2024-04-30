@@ -4,6 +4,7 @@ import com.github.telvarost.legacytranslations.GuiButtonCustom;
 import com.github.telvarost.legacytranslations.GuiLanguagePacks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.ScreenBase;
 import net.minecraft.client.gui.screen.ingame.Pause;
 import net.minecraft.client.gui.screen.menu.TexturePacks;
@@ -56,16 +57,20 @@ public class PauseMixin extends ScreenBase {
     @Inject(method = "init", at = @At("RETURN"), cancellable = true)
     public void init(CallbackInfo ci) {
         byte byte0 = -16;
-        buttons.add(new Button(7, width / 2 - 100, height / 4 + 72 + byte0, 178, 20, I18n.translate(("menu.mods"))));
-        buttons.add(new GuiButtonCustom(8, width / 2 + 80, height / 4 + 72 + byte0, 20, 20, "", true, 0));
+        if (!FabricLoader.getInstance().isModLoaded("modmenu")) {
+            buttons.add(new Button(7, width / 2 - 100, height / 4 + 72 + byte0, 200, 20, I18n.translate(("menu.texturepacks"))));
+        }
+        buttons.add(new GuiButtonCustom(8, width / 2 + 104, height / 4 + 72 + byte0, 20, 20, "", true, 0));
     }
 
     @Inject(method = "buttonClicked", at = @At("RETURN"), cancellable = true)
     protected void buttonClicked(Button arg, CallbackInfo ci) {
-
         if (arg.id == 7) {
-            this.minecraft.openScreen(new TexturePacks(this));
+            if (!FabricLoader.getInstance().isModLoaded("modmenu")) {
+                this.minecraft.openScreen(new TexturePacks(this));
+            }
         }
+
         if (arg.id == 8) {
             this.minecraft.openScreen(new GuiLanguagePacks(this));
         }

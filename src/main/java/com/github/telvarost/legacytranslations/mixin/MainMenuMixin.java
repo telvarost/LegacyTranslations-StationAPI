@@ -61,6 +61,14 @@ public class MainMenuMixin extends ScreenBase {
     }
 
     @ModifyConstant(
+            method = "init",
+            constant = @Constant(stringValue = "menu.mods")
+    )
+    public String init_translateTexturePacks(String def) {
+        return "menu.texturepacks";
+    }
+
+    @ModifyConstant(
             method = "render",
             constant = @Constant(stringValue = "Copyright Mojang AB. Do not distribute.")
     )
