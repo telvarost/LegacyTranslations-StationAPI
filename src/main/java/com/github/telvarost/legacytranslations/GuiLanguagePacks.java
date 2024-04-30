@@ -17,6 +17,11 @@ import net.minecraft.client.Minecraft;
 
 public class GuiLanguagePacks extends ScreenBase {
 
+    protected ScreenBase guiScreen;
+    private int field_6454_o;
+    public LanguagePackList packlist;
+    private GuiLanguagePackSlot guiLanguagePackSlot;
+
     public GuiLanguagePacks(ScreenBase guiscreen) {
         field_6454_o = -1;
         guiScreen = guiscreen;
@@ -29,7 +34,7 @@ public class GuiLanguagePacks extends ScreenBase {
         buttons.add(new OptionButton(6, width / 2 + 4, height - 48,
                 stringtranslate.translate("gui.done")));
         packlist = new LanguagePackList(minecraft, Minecraft.getGameDirectory());
-        packlist.updateAvaliableLanguagePacks();
+        //packlist.updateAvaliableLanguagePacks();
         guiLanguagePackSlot = new GuiLanguagePackSlot(this);
         guiLanguagePackSlot.registerButtons(buttons, 7, 8);
     }
@@ -96,9 +101,4 @@ public class GuiLanguagePacks extends ScreenBase {
     static TextRenderer func_22127_j(GuiLanguagePacks guilanguagepacks) {
         return guilanguagepacks.textManager;
     }
-
-    protected ScreenBase guiScreen;
-    private int field_6454_o;
-    public LanguagePackList packlist;
-    private GuiLanguagePackSlot guiLanguagePackSlot;
 }
