@@ -9,6 +9,7 @@
   ],
   "client": [
     "CharacterUtilsMixin",
+    "GameOptionsMixin",
     "MainMenuMixin",
     "PauseMixin",
     "TextRenderMixin",
