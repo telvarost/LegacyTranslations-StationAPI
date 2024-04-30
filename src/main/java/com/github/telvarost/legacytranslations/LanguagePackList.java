@@ -52,7 +52,7 @@ public class LanguagePackList
         {
             languagePackDir.mkdirs();
         }
-        updateAvaliableLanguagePacks();
+        updateAvailableLanguagePacks();
     }
 
     /**
@@ -81,7 +81,7 @@ public class LanguagePackList
     /**
      * check the language packs the client has installed
      */
-    public void updateAvaliableLanguagePacks()
+    public void updateAvailableLanguagePacks()
     {
         ArrayList<String> arraylist = new ArrayList<String>();
         selectedLanguagePack = ModHelper.ModHelperFields.langFile;
@@ -91,7 +91,7 @@ public class LanguagePackList
             File afile[] = languagePackDir.listFiles();
             File afile1[] = new File[afile.length + defaultLanguagePacks.length];
             for(int i = 0; i < afile.length + defaultLanguagePacks.length; i++) {
-                afile1[i] = i < afile.length ? afile[i] : new File((LanguagePackList.class).getResource("/lang/" + defaultLanguagePacks[i - afile.length] + ".lang").getFile());
+                afile1[i] = i < afile.length ? afile[i] : new File((LanguagePackList.class).getResource("/assets/legacytranslations/lang/" + defaultLanguagePacks[i - afile.length] + ".lang").getFile());
             }
             int i = afile1.length;
 

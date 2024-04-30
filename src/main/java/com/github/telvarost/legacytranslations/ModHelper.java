@@ -18,7 +18,7 @@ public class ModHelper {
         }
         try
         {
-            ((TranslationStorageAccessor) TranslationStorage.getInstance()).getTranslations().load(new InputStreamReader((TranslationStorage.class).getResourceAsStream("/lang/en_US.lang"), "UTF-8"));
+            ((TranslationStorageAccessor) TranslationStorage.getInstance()).getTranslations().load(new InputStreamReader((TranslationStorage.class).getResourceAsStream("/assets/legacytranslations/lang/en_US.lang"), "UTF-8"));
             System.out.println("Loading \"en_US\" lang table...");
             File settings = new File("options.txt");
             if(starting) {
@@ -65,10 +65,10 @@ public class ModHelper {
             } catch (FileNotFoundException e) {
                 reader2 = new InputStreamReader((TranslationStorage.class).getResourceAsStream("/lang/" + ModHelper.ModHelperFields.langFile + ".lang"), "UTF-8");
             }
-            //if(!ModHelper.ModHelperFields.langFile.equals("en_US")) {
+            if(!ModHelper.ModHelperFields.langFile.equals("en_US")) {
                 System.out.println("Loading \"" + ModHelper.ModHelperFields.langFile + "\" lang table...");
                 ((TranslationStorageAccessor) TranslationStorage.getInstance()).getTranslations().load(reader);
-            //}
+            }
             boolean useDefaultSplashes = ModHelper.ModHelperFields.langFile.equals("en_US");
             BufferedReader lineReader = new BufferedReader(reader2);
             splashesFile = "";
