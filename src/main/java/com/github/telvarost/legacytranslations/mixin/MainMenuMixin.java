@@ -2,7 +2,8 @@ package com.github.telvarost.legacytranslations.mixin;
 
 import com.github.telvarost.legacytranslations.GuiButtonCustom;
 import com.github.telvarost.legacytranslations.GuiLanguagePacks;
-import com.github.telvarost.legacytranslations.ModHelper;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.ScreenBase;
 import net.minecraft.client.gui.screen.menu.*;
 import net.minecraft.client.gui.widgets.Button;
@@ -15,8 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Random;
-
+@Environment(value= EnvType.CLIENT)
 @Mixin(MainMenu.class)
 public class MainMenuMixin extends ScreenBase {
 

@@ -1,9 +1,9 @@
 package com.github.telvarost.legacytranslations.mixin;
 
 import com.github.telvarost.legacytranslations.ModHelper;
-import net.minecraft.client.gui.widgets.Button;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.options.GameOptions;
-import net.minecraft.client.resource.language.TranslationStorage;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.io.PrintWriter;
 
+@Environment(value= EnvType.CLIENT)
 @Mixin(GameOptions.class)
 public class GameOptionsMixin {
 

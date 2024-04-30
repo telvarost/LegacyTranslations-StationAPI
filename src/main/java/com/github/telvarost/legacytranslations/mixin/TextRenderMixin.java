@@ -1,5 +1,7 @@
 package com.github.telvarost.legacytranslations.mixin;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.class_214;
 import net.minecraft.client.options.GameOptions;
 import net.minecraft.client.render.Tessellator;
@@ -24,6 +26,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+@Environment(value= EnvType.CLIENT)
 @Mixin(TextRenderer.class)
 public abstract class TextRenderMixin {
     @Shadow public abstract void drawText(String string, int i, int j, int k);

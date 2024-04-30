@@ -4,17 +4,17 @@
   "package": "com.github.telvarost.legacytranslations.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "CharacterUtilsMixin",
+    "TranslationStorageAccessor",
+    "TranslationStorageMixin"
   ],
   "server": [
   ],
   "client": [
-    "CharacterUtilsMixin",
     "GameOptionsMixin",
     "MainMenuMixin",
     "PauseMixin",
-    "TextRenderMixin",
-    "TranslationStorageAccessor",
-    "TranslationStorageMixin"
+    "TextRenderMixin"
   ],
   "injectors": {
     "defaultRequire": 1
