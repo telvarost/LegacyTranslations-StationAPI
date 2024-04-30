@@ -7,6 +7,7 @@ import java.util.Map;
 import net.minecraft.client.gui.widgets.ScrollableBase;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.TextRenderer;
+import net.minecraft.client.resource.language.TranslationStorage;
 
 public class GuiLanguagePackSlot extends ScrollableBase {
 
@@ -36,7 +37,7 @@ public class GuiLanguagePackSlot extends ScrollableBase {
 
     @Override
     protected boolean isEntrySelected(int i) {
-        return parentLanguagePackGui.packlist.availableLanguagePacks().get(i).equals(StringTranslate.langFile);
+        return parentLanguagePackGui.packlist.availableLanguagePacks().get(i).equals(ModHelper.ModHelperFields.langFile);
     }
 
     @Override

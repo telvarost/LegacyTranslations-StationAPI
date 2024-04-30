@@ -61,14 +61,14 @@ public class LanguagePackList
      */
     public boolean setLanguagePack(ScreenBase screen, int k) throws FileNotFoundException
     {
-        if(StringTranslate.langFile == availableLanguagePacks.get(k))
+        if(ModHelper.ModHelperFields.langFile == availableLanguagePacks.get(k))
         {
             return false;
         } else
         {
-            selectedLanguagePack = StringTranslate.langFile;
-            StringTranslate.langFile = availableLanguagePacks.get(k);
-            StringTranslate.reloadKeys();
+            selectedLanguagePack = ModHelper.ModHelperFields.langFile;
+            ModHelper.ModHelperFields.langFile = availableLanguagePacks.get(k);
+            ModHelper.reloadKeys();
             mc.options.saveOptions();
             ScreenScaler scaledresolution = new ScreenScaler(mc.options, mc.actualWidth, mc.actualHeight);
             int i = scaledresolution.getScaledWidth();
@@ -84,7 +84,7 @@ public class LanguagePackList
     public void updateAvaliableLanguagePacks()
     {
         ArrayList<String> arraylist = new ArrayList<String>();
-        selectedLanguagePack = StringTranslate.langFile;
+        selectedLanguagePack = ModHelper.ModHelperFields.langFile;
 
         if (languagePackDir.exists() && languagePackDir.isDirectory())
         {

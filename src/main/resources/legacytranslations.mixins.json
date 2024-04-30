@@ -10,7 +10,9 @@
   "client": [
     "MainMenuMixin",
     "PauseMixin",
-    "TextRenderMixin"
+    "TextRenderMixin",
+    "TranslationStorageAccessor",
+    "TranslationStorageMixin"
   ],
   "injectors": {
     "defaultRequire": 1

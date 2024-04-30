@@ -10,6 +10,7 @@ import net.minecraft.client.gui.screen.menu.MainMenu;
 import net.minecraft.client.gui.widgets.Button;
 import net.minecraft.client.gui.widgets.OptionButton;
 import net.minecraft.client.render.TextRenderer;
+import net.minecraft.client.resource.language.TranslationStorage;
 import org.lwjgl.Sys;
 
 import net.minecraft.client.Minecraft;
@@ -22,11 +23,11 @@ public class GuiLanguagePacks extends ScreenBase {
     }
 
     public void init() {
-        StringTranslate stringtranslate = StringTranslate.getInstance();
+        TranslationStorage stringtranslate = TranslationStorage.getInstance();
         buttons.add(new OptionButton(5, width / 2 - 154, height - 48,
-                stringtranslate.translateKey("languagePack.openFolder")));
+                stringtranslate.translate("languagePack.openFolder")));
         buttons.add(new OptionButton(6, width / 2 + 4, height - 48,
-                stringtranslate.translateKey("gui.done")));
+                stringtranslate.translate("gui.done")));
         packlist = new LanguagePackList(minecraft, Minecraft.getGameDirectory());
         packlist.updateAvaliableLanguagePacks();
         guiLanguagePackSlot = new GuiLanguagePackSlot(this);
@@ -62,12 +63,12 @@ public class GuiLanguagePacks extends ScreenBase {
 
     public void render(int i, int j, float f) {
         guiLanguagePackSlot.render(i, j, f);
-        StringTranslate stringtranslate = StringTranslate.getInstance();
+        TranslationStorage stringtranslate = TranslationStorage.getInstance();
         drawTextWithShadowCentred(textManager,
-                stringtranslate.translateKey("languagePack.title"), width / 2,
+                stringtranslate.translate("languagePack.title"), width / 2,
                 16, 0xffffff);
         drawTextWithShadowCentred(textManager,
-                stringtranslate.translateKey("languagePack.folderInfo"),
+                stringtranslate.translate("languagePack.folderInfo"),
                 width / 2 - 77, height - 26, 0x808080);
         super.render(i, j, f);
 //		guiTexturePackSlot.registerScrollButtons(controlList, 7, 8);

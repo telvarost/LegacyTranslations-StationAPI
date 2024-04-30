@@ -8,19 +8,34 @@ import net.minecraft.client.texture.TextureManager;
 import net.minecraft.util.CharacterUtils;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.IntBuffer;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 @Mixin(TextRenderer.class)
-public class TextRenderMixin {
+public abstract class TextRenderMixin {
+    @Shadow public abstract void drawText(String string, int i, int j, int k);
+
+    @Shadow public abstract void method_1904(String string, int i, int j, int k, int l);
+
+    @Shadow public abstract int getTextWidth(String string);
+
+    @Shadow public abstract int method_1902(String string, int i);
+
+    @Shadow public abstract void drawText(String string, int i, int j, int k, boolean bl);
+
     @Unique private int charWidth[];
     @Unique private int res;
     @Unique public int fontTextureName;
@@ -202,5 +217,367 @@ public class TextRenderMixin {
             fontTextureNames[j] = renderengine.method_1088(fontPng);
         }
         return fontTextureNames[j];
+    }
+
+
+
+    @Inject(
+            method = "drawText(Ljava/lang/String;IIIZ)V",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    public void legacyTranslations_drawText(String s, int i, int j, int k, boolean flag, CallbackInfo ci) {
+        if(s == null)
+        {
+            return;
+        }
+        if(flag)
+        {
+            int l = k & 0xff000000;
+            k = (k & 0xfcfcfc) >> 2;
+            k += l;
+        }
+        float f = (float)(k >> 16 & 0xff) / 255F;
+        float f1 = (float)(k >> 8 & 0xff) / 255F;
+        float f2 = (float)(k & 0xff) / 255F;
+        float f3 = (float)(k >> 24 & 0xff) / 255F;
+        if(f3 == 0.0F)
+        {
+            f3 = 1.0F;
+        }
+        GL11.glColor4f(f, f1, f2, f3);
+        buffer.clear();
+        GL11.glPushMatrix();
+        GL11.glTranslatef(i, j, 0.0F);
+        for(int i1 = 0; i1 < s.length(); i1++)
+        {
+            for(; s.length() > i1 + 1 && s.charAt(i1) == '\247'; i1 += 2)
+            {
+                int j1 = colorChars.indexOf(s.toLowerCase().charAt(i1 + 1));
+                int k1 = j1 / 16;
+                char ch = s.toLowerCase().charAt(i1 + 1);
+                if(ch == 'g') {
+                    int k4 = Color.HSBtoRGB(((System.currentTimeMillis() % 10000L) / 10000F), 1.0F, 1.0F) & 0xffffff;
+                    if(flag)
+                    {
+                        int l = k4 & 0xff000000;
+                        k4 = (k4 & 0xfcfcfc) >> 2;
+                        k4 += l;
+                    }
+                    f = (float)(k4 >> 16 & 0xff) / 255F;
+                    f1 = (float)(k4 >> 8 & 0xff) / 255F;
+                    f2 = (float)(k4 & 0xff) / 255F;
+                }
+                if(j1 < 0 || j1 > colorChars.length() - 1)
+                {
+                    j1 = 15;
+                }
+                buffer.put(fontDisplayLists + 256 + j1 + (k1 * 16) + (flag ? j1 > 15 ? ((colorChars.length() - 16) / 2) + 1 : 16 : 0));
+                if(buffer.remaining() == 0)
+                {
+                    buffer.flip();
+                    GL11.glCallLists(buffer);
+                    buffer.clear();
+                }
+                if(ch == 'g')
+                    GL11.glColor4f(f, f1, f2, f3);
+            }
+
+            if(i1 < s.length())
+            {
+                int k1 = CharacterUtils.validCharacters.indexOf(s.charAt(i1));
+                if(k1 >= 0)
+                {
+                    buffer.put(fontDisplayLists + k1 + (k1 >= 256 ? 512 : 0));
+                }
+            }
+            if(buffer.remaining() == 0)
+            {
+                buffer.flip();
+                GL11.glCallLists(buffer);
+                buffer.clear();
+            }
+        }
+
+        buffer.flip();
+        GL11.glCallLists(buffer);
+        GL11.glColor4f(1, 1, 1, 1);
+        GL11.glPopMatrix();
+        ci.cancel();
+    }
+
+
+    @Inject(
+            method = "getTextWidth",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    public void legacyTranslations_getTextWidth(String s, CallbackInfoReturnable<Integer> cir) {
+        if(s == null)
+        {
+            cir.setReturnValue(0);
+            return;
+        }
+        int i = 0;
+        for(int j = 0; j < s.length(); j++)
+        {
+            if(s.charAt(j) == '\247')
+            {
+                j++;
+                continue;
+            }
+            int k = CharacterUtils.validCharacters.indexOf(s.charAt(j));
+            if(k >= 0)
+            {
+                i += charWidth[k];
+            }
+        }
+
+        cir.setReturnValue(i);
+        return;
+    }
+
+    @Inject(
+            method = "method_1904",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    public void legacyTranslations_method_1904(String s, int i, int j, int k, int l, CallbackInfo ci) {
+        String as[] = s.split("\n");
+        if(as.length > 1)
+        {
+            for(int i1 = 0; i1 < as.length; i1++)
+            {
+                method_1904(as[i1], i, j, k, l);
+                j += method_1902(as[i1], k);
+            }
+
+            return;
+        }
+        String as1[] = s.split(" ");
+        int j1 = 0;
+        do
+        {
+            if(j1 >= as1.length)
+            {
+                break;
+            }
+            String s1;
+            for(s1 = (new StringBuilder()).append(as1[j1++]).append(" ").toString(); j1 < as1.length && getTextWidth((new StringBuilder()).append(s1).append(as1[j1]).toString()) < k; s1 = (new StringBuilder()).append(s1).append(as1[j1++]).append(" ").toString()) { }
+            int k1;
+            for(; getTextWidth(s1) > k; s1 = s1.substring(k1))
+            {
+                for(k1 = 0; getTextWidth(s1.substring(0, k1 + 1)) <= k; k1++) { }
+                if(s1.substring(0, k1).trim().length() > 0)
+                {
+                    drawText(s1.substring(0, k1), i, j, l);
+                    j += 8;
+                }
+            }
+
+            if(s1.trim().length() > 0)
+            {
+                drawText(s1, i, j, l);
+                j += 8;
+            }
+        } while(true);
+        ci.cancel();
+    }
+
+
+    @Inject(
+            method = "method_1902",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    public void legacyTranslations_method_1902(String s, int i, CallbackInfoReturnable<Integer> cir) {
+        String as[] = s.split("\n");
+        if(as.length > 1)
+        {
+            int j = 0;
+            for(int k = 0; k < as.length; k++)
+            {
+                j += method_1902(as[k], i);
+            }
+
+            cir.setReturnValue(j);
+            return;
+        }
+        String as1[] = s.split(" ");
+        int l = 0;
+        int i1 = 0;
+        do
+        {
+            if(l >= as1.length)
+            {
+                break;
+            }
+            String s1;
+            for(s1 = (new StringBuilder()).append(as1[l++]).append(" ").toString(); l < as1.length && getTextWidth((new StringBuilder()).append(s1).append(as1[l]).toString()) < i; s1 = (new StringBuilder()).append(s1).append(as1[l++]).append(" ").toString()) { }
+            int j1;
+            for(; getTextWidth(s1) > i; s1 = s1.substring(j1))
+            {
+                for(j1 = 0; getTextWidth(s1.substring(0, j1 + 1)) <= i; j1++) { }
+                if(s1.substring(0, j1).trim().length() > 0)
+                {
+                    i1 += 8;
+                }
+            }
+
+            if(s1.trim().length() > 0)
+            {
+                i1 += 8;
+            }
+        } while(true);
+        if(i1 < 8)
+        {
+            i1 += 8;
+        }
+        cir.setReturnValue(i1);
+        return;
+    }
+
+    @Unique
+    public int splitStringWidth(String par1Str, int par2) {
+        return this.listFormattedStringToWidth(par1Str, par2).size();
+    }
+
+    @Unique
+    public void drawSplitString(String par1Str, int par2, int par3, int par4,
+                                int par5) {
+        par1Str = this.trimStringNewline(par1Str);
+        this.renderSplitString(par1Str, par2, par3, par4, false);
+    }
+
+    @Unique
+    private String trimStringNewline(String par1Str) {
+        while (par1Str != null && par1Str.endsWith("\n")) {
+            par1Str = par1Str.substring(0, par1Str.length() - 1);
+        }
+
+        return par1Str;
+    }
+
+    @Unique
+    private void renderSplitString(String par1Str, int par2, int par3,
+                                   int par4, boolean par5) {
+        List var6 = this.listFormattedStringToWidth(par1Str, par4);
+
+        for (Iterator var7 = var6.iterator(); var7.hasNext(); par3 += 8) {
+            String var8 = (String) var7.next();
+            this.drawText(var8, par2, par3, 0, par5);
+        }
+    }
+
+    @Unique
+    public List listFormattedStringToWidth(String par1Str, int par2) {
+        return Arrays.asList(this.wrapFormattedStringToWidth(par1Str, par2)
+                .split("\n"));
+    }
+
+    @Unique
+    String wrapFormattedStringToWidth(String par1Str, int par2) {
+        int var3 = this.sizeStringToWidth(par1Str, par2);
+
+        if (par1Str.length() <= var3) {
+            return par1Str;
+        } else {
+            String var4 = par1Str.substring(0, var3);
+            char var5 = par1Str.charAt(var3);
+            boolean var6 = var5 == 32 || var5 == 10;
+            String var7 = getFormatFromString(var4)
+                    + par1Str.substring(var3 + (var6 ? 1 : 0));
+            return var4 + "\n" + this.wrapFormattedStringToWidth(var7, par2);
+
+        }
+    }
+
+    @Unique
+    private static String getFormatFromString(String par0Str) {
+        String var1 = "";
+        int var2 = -1;
+        int var3 = par0Str.length();
+
+        while ((var2 = par0Str.indexOf(167, var2 + 1)) != -1) {
+            if (var2 < var3 - 1) {
+                char var4 = par0Str.charAt(var2 + 1);
+
+            }
+        }
+
+        return var1;
+    }
+
+    @Unique
+    private int sizeStringToWidth(String par1Str, int par2) {
+        int var3 = par1Str.length();
+        int var4 = 0;
+        int var5 = 0;
+        int var6 = -1;
+
+        for (boolean var7 = false; var5 < var3; ++var5) {
+            char var8 = par1Str.charAt(var5);
+
+            switch (var8) {
+                case 10:
+                    --var5;
+                    break;
+
+                case 167:
+                    if (var5 < var3 - 1) {
+                        ++var5;
+                        char var9 = par1Str.charAt(var5);
+
+                        if (var9 != 108 && var9 != 76) {
+                            if (var9 == 114 || var9 == 82) {
+                                var7 = false;
+                            }
+                        } else {
+                            var7 = true;
+                        }
+                    }
+
+                    break;
+
+                case 32:
+                    var6 = var5;
+
+                default:
+                    var4 += this.getCharWidth(var8);
+
+                    if (var7) {
+                        ++var4;
+                    }
+            }
+
+            if (var8 == 10) {
+                ++var5;
+                var6 = var5;
+                break;
+            }
+
+            if (var4 > par2) {
+                break;
+            }
+        }
+
+        return var5 != var3 && var6 != -1 && var6 < var5 ? var6 : var5;
+    }
+
+    @Unique
+    public int getCharWidth(char par1) {
+        if (par1 == 167) {
+            return -1;
+        } else if (par1 == 32) {
+            return 4;
+        } else {
+            int var2 = CharacterUtils.validCharacters.indexOf(par1);
+
+            if (par1 > 0 && var2 != -1) {
+                return this.charWidth[var2];
+            } else {
+                return 0;
+            }
+        }
     }
 }
