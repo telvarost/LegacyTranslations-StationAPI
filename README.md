@@ -1,6 +1,6 @@
 # LegacyTranslations for Minecraft Beta 1.7.3
 
-## This mod is not approved or completed yet
+## This mod is not fully completed yet
 
 ### Addon Credits
 * @Roadhog360 - Initially creating the Legacy Translation System for New Frontier Craft
@@ -12,7 +12,7 @@ This mod adds custom language loading capabilities to the game. Rather than the 
 
 ### Future Plans
 Fabric and other variants without base class edits will be created in the future.
-* (This repo is that fabric port if permission is given to make it)
+* (This repo is that fabric port)
 
 ### Notes
 We've extended the available selection of valid characters in Beta to allow for more language translations beyond what was possible in Vanilla. Currently translations are limited to left-to-right character based languages, however future versions of the LT System will resolve this by adding Unicode support & right-to-left character support done by @icanttellyou
