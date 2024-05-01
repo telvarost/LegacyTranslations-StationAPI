@@ -2,6 +2,7 @@ package com.github.telvarost.legacytranslations.mixin;
 
 import com.github.telvarost.legacytranslations.GuiButtonCustom;
 import com.github.telvarost.legacytranslations.GuiLanguagePacks;
+import com.github.telvarost.legacytranslations.ModHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
@@ -61,6 +62,7 @@ public class PauseMixin extends ScreenBase {
             buttons.add(new Button(7, width / 2 - 100, height / 4 + 72 + byte0, 200, 20, I18n.translate(("menu.texturepacks"))));
         }
         buttons.add(new GuiButtonCustom(8, width / 2 + 104, height / 4 + 72 + byte0, 20, 20, "", true, 0));
+        ModHelper.reloadKeys();
     }
 
     @Inject(method = "buttonClicked", at = @At("RETURN"), cancellable = true)
