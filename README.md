@@ -4,6 +4,7 @@
 * @Roadhog360 - Initially creating the Legacy Translation System for New Frontier Craft
 * @Birevan - The foundation and inspiration for the creation of this addon, alongside the source of many of the internal textures and files that let it function
 * @[NFC] Vivian -  Bugfixes, Documentation, & porting the Legacy Translation System to Vanilla
+* @Telvarost - Beta Fabric port (this)
 
 ### Description
 This mod adds custom language loading capabilities to the game. Rather than the hardcoded and static language list that Mojang's modern Minecraft provides the player, the Translation System has a custom language system much the same as texturepacks. This means that users can add their own languages and/or modify existing ones to their heart's content. Our hope is that this can eventually become the standard for community translations of these older versions of the game.
@@ -27,7 +28,8 @@ Currently, no translations are built into the addon, as they all still need to r
 4. (Optional) Add Mod Menu to the mod folder for the instance: https://github.com/calmilamsy/ModMenu/releases
 5. (Optional) Add GlassConfigAPI 2.0+ to the mod folder for the instance: https://maven.glass-launcher.net/#/releases/net/glasslauncher/mods/GlassConfigAPI
 6. Add this mod to the mod folder for the instance: https://github.com/telvarost/LegacyTranslations-StationAPI/releases
-7. Run and enjoy! 👍
+7. Add desired language packs from NFC or [GitHub](https://github.com/telvarost/LegacyTranslations-StationAPI/releases/tag/v0.1.0) to your languagepacks folder after running the mod once.
+8. Enjoy! 👍
 
 ## Feedback
 
@@ -35,6 +37,6 @@ Got any suggestions on what should be added next? Feel free to share it by [crea
 
 ## Contributing
 
-Thanks for considering contributing! To get started fork this repository, make your changes, and create a PR. 
+Thanks for considering contributing! To get started fork this repository, make your changes, and create a PR.
 
 If you are new to StationAPI consider watching the following videos on Babric/StationAPI Minecraft modding: https://www.youtube.com/watch?v=9-sVGjnGJ5s&list=PLa2JWzyvH63wGcj5-i0P12VkJG7PDyo9T
