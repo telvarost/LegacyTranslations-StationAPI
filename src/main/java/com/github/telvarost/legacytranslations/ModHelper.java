@@ -56,43 +56,43 @@ public class ModHelper {
             InputStreamReader reader;
             try {
                 reader = new InputStreamReader(new FileInputStream("./languagepacks/" + ModHelper.ModHelperFields.langFile + ".lang"), "UTF-8");
+                if(!ModHelper.ModHelperFields.langFile.equals("en_US")) {
+                    System.out.println("Loading \"" + ModHelper.ModHelperFields.langFile + "\" lang table...");
+                    ((TranslationStorageAccessor) TranslationStorage.getInstance()).getTranslations().load(reader);
+                }
             } catch (FileNotFoundException e) {
-                reader = new InputStreamReader((TranslationStorage.class).getResourceAsStream("/lang/" + ModHelper.ModHelperFields.langFile + ".lang"), "UTF-8");
+                ModHelper.ModHelperFields.langFile = "en_US";
+                //reader = new InputStreamReader((TranslationStorage.class).getResourceAsStream("/lang/" + ModHelper.ModHelperFields.langFile + ".lang"), "UTF-8");
             }
             InputStreamReader reader2;
             try {
                 reader2 = new InputStreamReader(new FileInputStream("./languagepacks/" + ModHelper.ModHelperFields.langFile + ".lang"), "UTF-8");
+                boolean useDefaultSplashes = ModHelper.ModHelperFields.langFile.equals("en_US");
+                BufferedReader lineReader = new BufferedReader(reader2);
+                splashesFile = "";
+                for(int i = 0; i < 3; i++) {
+                    String line = lineReader.readLine();
+                    if(line.startsWith("#")) {
+                        while(lineReader.readLine().startsWith("#"));
+                    }
+                    if(line.startsWith("splashes|")) {
+                        splashesFile = line.replace("splashes|", "");
+                        useDefaultSplashes = false;
+                    }
+                    if(splashesFile.equals("")) {
+                        useDefaultSplashes = true;
+                    }
+                }
+                if(useDefaultSplashes) {
+                    splashesFile = "jar:/title/splashes.txt";
+                    if(!ModHelper.ModHelperFields.langFile.equals("en_US"))
+                        System.out.println("Current lang file has not defined a splashes file. Using the default one.");
+                }
             } catch (FileNotFoundException e) {
-                reader2 = new InputStreamReader((TranslationStorage.class).getResourceAsStream("/lang/" + ModHelper.ModHelperFields.langFile + ".lang"), "UTF-8");
+                ModHelper.ModHelperFields.langFile = "en_US";
+                //reader2 = new InputStreamReader((TranslationStorage.class).getResourceAsStream("/lang/" + ModHelper.ModHelperFields.langFile + ".lang"), "UTF-8");
             }
-            if(!ModHelper.ModHelperFields.langFile.equals("en_US")) {
-                System.out.println("Loading \"" + ModHelper.ModHelperFields.langFile + "\" lang table...");
-                ((TranslationStorageAccessor) TranslationStorage.getInstance()).getTranslations().load(reader);
-            }
-            boolean useDefaultSplashes = ModHelper.ModHelperFields.langFile.equals("en_US");
-            BufferedReader lineReader = new BufferedReader(reader2);
-            splashesFile = "";
-            for(int i = 0; i < 3; i++) {
-                String line = lineReader.readLine();
-                if(line.startsWith("#")) {
-                    while(lineReader.readLine().startsWith("#"));
-                }
-                if(line.startsWith("splashes|")) {
-                    splashesFile = line.replace("splashes|", "");
-                    useDefaultSplashes = false;
-                }
-                if(splashesFile.equals("")) {
-                    useDefaultSplashes = true;
-                }
-            }
-            if(useDefaultSplashes) {
-                splashesFile = "jar:/title/splashes.txt";
-                if(!ModHelper.ModHelperFields.langFile.equals("en_US"))
-                    System.out.println("Current lang file has not defined a splashes file. Using the default one.");
-            }
-        }
-        catch(IOException ioexception)
-        {
+        } catch(IOException ioexception) {
             ioexception.printStackTrace();
         }
     }

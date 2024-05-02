@@ -109,7 +109,7 @@ public class LanguagePackList
                         if(file.isFile()) {
                             in = new FileInputStream(file);
                         } else {
-                            in = (LanguagePackList.class).getResourceAsStream("/lang/" + file.getName());
+                            in = (LanguagePackList.class).getResourceAsStream("/assets/legacytranslations/lang/" + file.getName());
                         }
                         BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
                         String title = reader.readLine();

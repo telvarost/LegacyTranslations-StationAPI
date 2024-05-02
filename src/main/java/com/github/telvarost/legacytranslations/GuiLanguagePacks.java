@@ -51,7 +51,7 @@ public class GuiLanguagePacks extends ScreenBase {
                 e.printStackTrace();
             }
         } else if (guibutton.id == 6) {
-            minecraft.textureManager.reloadTexturesFromTexturePack();
+            //minecraft.textureManager.reloadTexturesFromTexturePack();
             minecraft.openScreen(guiScreen);
         } else {
             guiLanguagePackSlot.buttonClicked(guibutton);
