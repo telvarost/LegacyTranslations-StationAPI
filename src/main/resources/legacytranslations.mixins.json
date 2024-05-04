@@ -11,8 +11,10 @@
   "server": [
   ],
   "client": [
+    "ButtonWidgetMixin",
     "GameOptionsMixin",
     "MainMenuMixin",
+    "MinecraftAccessor",
     "PauseMixin",
     "TextRenderMixin"
   ],

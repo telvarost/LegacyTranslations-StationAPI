@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.class_564;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.ScreenBase;
-import net.minecraft.client.util.ScreenScaler;
+import net.minecraft.client.gui.screen.Screen;
 import net.modificationstation.stationapi.api.resource.language.LanguageManager;
 
 public class LanguagePackList
@@ -61,7 +61,7 @@ public class LanguagePackList
      * Sets the new TexturePack to be used, returning true if it has actually changed, false if nothing changed.
      * @throws FileNotFoundException
      */
-    public boolean setLanguagePack(ScreenBase screen, int k) throws FileNotFoundException
+    public boolean setLanguagePack(Screen screen, int k) throws FileNotFoundException
     {
         if(ModHelper.ModHelperFields.langFile == availableLanguagePacks.get(k))
         {
@@ -74,10 +74,10 @@ public class LanguagePackList
                 LanguageManager.changeLanguage(ModHelper.ModHelperFields.langFile);
             }
             ModHelper.reloadKeys();
-            mc.options.saveOptions();
-            ScreenScaler scaledresolution = new ScreenScaler(mc.options, mc.actualWidth, mc.actualHeight);
-            int i = scaledresolution.getScaledWidth();
-            int j = scaledresolution.getScaledHeight();
+            mc.options.save();
+            class_564 scaledresolution = new class_564(mc.options, mc.displayWidth, mc.displayHeight);
+            int i = scaledresolution.method_1857();
+            int j = scaledresolution.method_1858();
             screen.init(mc, i, j);
             return true;
         }
