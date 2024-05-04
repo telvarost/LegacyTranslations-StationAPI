@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
-@Mixin(CharacterUtils.class)
+@Mixin(net.minecraft.util.CharacterUtils.class)
 public class CharacterUtilsMixin {
 
     @ModifyConstant(
