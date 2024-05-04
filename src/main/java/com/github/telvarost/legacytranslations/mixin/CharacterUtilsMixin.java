@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class CharacterUtilsMixin {
 
     @ModifyConstant(
-            method = "getValidCharacters",
+            method = "loadValidCharacters",
             constant = @Constant(stringValue = "/font.txt")
     )
     private static String getValidCharacters(String def) {

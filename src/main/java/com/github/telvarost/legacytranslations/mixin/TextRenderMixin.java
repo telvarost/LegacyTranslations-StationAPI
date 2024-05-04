@@ -2,11 +2,11 @@ package com.github.telvarost.legacytranslations.mixin;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.class_214;
-import net.minecraft.client.options.GameOptions;
+import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.render.Tessellator;
-import net.minecraft.client.render.TextRenderer;
 import net.minecraft.client.texture.TextureManager;
+import net.minecraft.client.util.GlAllocationUtils;
 import net.minecraft.util.CharacterUtils;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,20 +29,20 @@ import java.util.List;
 @Environment(value= EnvType.CLIENT)
 @Mixin(TextRenderer.class)
 public abstract class TextRenderMixin {
-    @Shadow public abstract void drawText(String string, int i, int j, int k);
+    @Shadow public abstract void draw(String string, int i, int j, int k);
 
     @Shadow public abstract void method_1904(String string, int i, int j, int k, int l);
 
-    @Shadow public abstract int getTextWidth(String string);
+    @Shadow public abstract int getWidth(String string);
 
     @Shadow public abstract int method_1902(String string, int i);
 
-    @Shadow public abstract void drawText(String string, int i, int j, int k, boolean bl);
+    @Shadow public abstract void draw(String string, int i, int j, int k, boolean bl);
 
     @Shadow private int[] field_2462 = new int[256]; // charWidth
     @Shadow public int field_2461 = 0; // fontTextureName
     @Shadow private int field_2463; // fontDisplayLists
-    @Shadow private IntBuffer field_2464 = class_214.method_745(1024); // buffer
+    @Shadow private IntBuffer field_2464 = GlAllocationUtils.allocateIntBuffer(1024); // buffer
     
     @Unique private int res;
     @Unique public int fontTextureNames[];
@@ -60,13 +60,13 @@ public abstract class TextRenderMixin {
             at = @At("RETURN")
     )
     private void TextRenderMixin(GameOptions options, String texString, TextureManager renderengine, CallbackInfo ci) {
-        field_2462 = new int[CharacterUtils.validCharacters.length()];
+        field_2462 = new int[CharacterUtils.VALID_CHARACTERS.length()];
         field_2461 = 0;
-        field_2464 = class_214.method_745(1024 /*GL_FRONT_LEFT*/);
-        fontTextureNames = new int[(CharacterUtils.validCharacters.length() / 256) + 1];
+        field_2464 = GlAllocationUtils.allocateIntBuffer(1024 /*GL_FRONT_LEFT*/);
+        fontTextureNames = new int[(CharacterUtils.VALID_CHARACTERS.length() / 256) + 1];
         fontPngName = "";
         updateFontImage(0, renderengine, texString);
-        for(int k = 0; k < CharacterUtils.validCharacters.length(); k++)
+        for(int k = 0; k < CharacterUtils.VALID_CHARACTERS.length(); k++)
         {
             updateFontImage(k, renderengine, texString);
             int wrappedk = k % 256;
@@ -104,16 +104,16 @@ public abstract class TextRenderMixin {
             field_2462[k] = (j2 + 2 + ((res/8) - 1)) / (res/8);
         }
 
-        field_2463 = class_214.method_741(288);
+        field_2463 = GlAllocationUtils.generateDisplayLists(288);
         Tessellator tessellator = Tessellator.INSTANCE;
-        for(int i1 = 0; i1 < CharacterUtils.validCharacters.length(); i1++)
+        for(int i1 = 0; i1 < CharacterUtils.VALID_CHARACTERS.length(); i1++)
         {
             updateFontImage(i1, renderengine, texString);
             field_2461 = getTextureId(i1, renderengine);
             GL11.glNewList(field_2463 + i1 + (i1 >= 256 ? 512 : 0), 4864 /*GL_COMPILE*/);
             GL11.glBindTexture(3553, field_2461);
             int renderWidth = 128;
-            tessellator.start();
+            tessellator.startQuads();
             int l1 = (i1 % 16) * (renderWidth/16);
             int k2 = (i1 / 16) * (renderWidth/16);
             float f = (float)(renderWidth/16);
@@ -226,11 +226,11 @@ public abstract class TextRenderMixin {
 
 
     @Inject(
-            method = "drawText(Ljava/lang/String;IIIZ)V",
+            method = "draw(Ljava/lang/String;IIIZ)V",
             at = @At("HEAD"),
             cancellable = true
     )
-    public void legacyTranslations_drawText(String s, int i, int j, int k, boolean flag, CallbackInfo ci) {
+    public void legacyTranslations_draw(String s, int i, int j, int k, boolean flag, CallbackInfo ci) {
         if(s == null)
         {
             return;
@@ -289,7 +289,7 @@ public abstract class TextRenderMixin {
 
             if(i1 < s.length())
             {
-                int k1 = CharacterUtils.validCharacters.indexOf(s.charAt(i1));
+                int k1 = CharacterUtils.VALID_CHARACTERS.indexOf(s.charAt(i1));
                 if(k1 >= 0)
                 {
                     //k1 += 32;
@@ -313,11 +313,11 @@ public abstract class TextRenderMixin {
 
 
     @Inject(
-            method = "getTextWidth",
+            method = "getWidth",
             at = @At("HEAD"),
             cancellable = true
     )
-    public void legacyTranslations_getTextWidth(String s, CallbackInfoReturnable<Integer> cir) {
+    public void legacyTranslations_getWidth(String s, CallbackInfoReturnable<Integer> cir) {
         if(s == null)
         {
             cir.setReturnValue(0);
@@ -331,7 +331,7 @@ public abstract class TextRenderMixin {
                 j++;
                 continue;
             }
-            int k = CharacterUtils.validCharacters.indexOf(s.charAt(j));
+            int k = CharacterUtils.VALID_CHARACTERS.indexOf(s.charAt(j));
             if(k >= 0)
             {
                 i += field_2462[k];
@@ -368,21 +368,21 @@ public abstract class TextRenderMixin {
                 break;
             }
             String s1;
-            for(s1 = (new StringBuilder()).append(as1[j1++]).append(" ").toString(); j1 < as1.length && getTextWidth((new StringBuilder()).append(s1).append(as1[j1]).toString()) < k; s1 = (new StringBuilder()).append(s1).append(as1[j1++]).append(" ").toString()) { }
+            for(s1 = (new StringBuilder()).append(as1[j1++]).append(" ").toString(); j1 < as1.length && getWidth((new StringBuilder()).append(s1).append(as1[j1]).toString()) < k; s1 = (new StringBuilder()).append(s1).append(as1[j1++]).append(" ").toString()) { }
             int k1;
-            for(; getTextWidth(s1) > k; s1 = s1.substring(k1))
+            for(; getWidth(s1) > k; s1 = s1.substring(k1))
             {
-                for(k1 = 0; getTextWidth(s1.substring(0, k1 + 1)) <= k; k1++) { }
+                for(k1 = 0; getWidth(s1.substring(0, k1 + 1)) <= k; k1++) { }
                 if(s1.substring(0, k1).trim().length() > 0)
                 {
-                    drawText(s1.substring(0, k1), i, j, l);
+                    draw(s1.substring(0, k1), i, j, l);
                     j += 8;
                 }
             }
 
             if(s1.trim().length() > 0)
             {
-                drawText(s1, i, j, l);
+                draw(s1, i, j, l);
                 j += 8;
             }
         } while(true);
@@ -418,11 +418,11 @@ public abstract class TextRenderMixin {
                 break;
             }
             String s1;
-            for(s1 = (new StringBuilder()).append(as1[l++]).append(" ").toString(); l < as1.length && getTextWidth((new StringBuilder()).append(s1).append(as1[l]).toString()) < i; s1 = (new StringBuilder()).append(s1).append(as1[l++]).append(" ").toString()) { }
+            for(s1 = (new StringBuilder()).append(as1[l++]).append(" ").toString(); l < as1.length && getWidth((new StringBuilder()).append(s1).append(as1[l]).toString()) < i; s1 = (new StringBuilder()).append(s1).append(as1[l++]).append(" ").toString()) { }
             int j1;
-            for(; getTextWidth(s1) > i; s1 = s1.substring(j1))
+            for(; getWidth(s1) > i; s1 = s1.substring(j1))
             {
-                for(j1 = 0; getTextWidth(s1.substring(0, j1 + 1)) <= i; j1++) { }
+                for(j1 = 0; getWidth(s1.substring(0, j1 + 1)) <= i; j1++) { }
                 if(s1.substring(0, j1).trim().length() > 0)
                 {
                     i1 += 8;
@@ -470,7 +470,7 @@ public abstract class TextRenderMixin {
 
         for (Iterator var7 = var6.iterator(); var7.hasNext(); par3 += 8) {
             String var8 = (String) var7.next();
-            this.drawText(var8, par2, par3, 0, par5);
+            this.draw(var8, par2, par3, 0, par5);
         }
     }
 
@@ -576,7 +576,7 @@ public abstract class TextRenderMixin {
         } else if (par1 == 32) {
             return 4;
         } else {
-            int var2 = CharacterUtils.validCharacters.indexOf(par1);
+            int var2 = CharacterUtils.VALID_CHARACTERS.indexOf(par1);
 
             if (par1 > 0 && var2 != -1) {
                 return this.field_2462[var2];

@@ -4,42 +4,41 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
-
-import net.minecraft.client.gui.screen.ScreenBase;
-import net.minecraft.client.gui.screen.menu.MainMenu;
-import net.minecraft.client.gui.widgets.Button;
-import net.minecraft.client.gui.widgets.OptionButton;
-import net.minecraft.client.render.TextRenderer;
 import net.minecraft.client.resource.language.TranslationStorage;
 import org.lwjgl.Sys;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.gui.widget.OptionButtonWidget;
 
-public class GuiLanguagePacks extends ScreenBase {
+public class GuiLanguagePacks extends Screen {
 
-    protected ScreenBase guiScreen;
+    protected Screen guiScreen;
     private int field_6454_o;
     public LanguagePackList packlist;
     private GuiLanguagePackSlot guiLanguagePackSlot;
 
-    public GuiLanguagePacks(ScreenBase guiscreen) {
+    public GuiLanguagePacks(Screen guiscreen) {
         field_6454_o = -1;
         guiScreen = guiscreen;
     }
 
     public void init() {
         TranslationStorage stringtranslate = TranslationStorage.getInstance();
-        buttons.add(new OptionButton(5, width / 2 - 154, height - 48,
-                stringtranslate.translate("languagePack.openFolder")));
-        buttons.add(new OptionButton(6, width / 2 + 4, height - 48,
-                stringtranslate.translate("gui.done")));
-        packlist = new LanguagePackList(minecraft, Minecraft.getGameDirectory());
+        buttons.add(new OptionButtonWidget(5, width / 2 - 154, height - 48,
+                stringtranslate.get("languagePack.openFolder")));
+        buttons.add(new OptionButtonWidget(6, width / 2 + 4, height - 48,
+                stringtranslate.get("gui.done")));
+        packlist = new LanguagePackList(minecraft, Minecraft.getRunDirectory());
         packlist.updateAvailableLanguagePacks();
         guiLanguagePackSlot = new GuiLanguagePackSlot(this);
         guiLanguagePackSlot.registerButtons(buttons, 7, 8);
     }
 
-    protected void buttonClicked(Button guibutton) {
+    protected void buttonClicked(ButtonWidget guibutton) {
         if (!guibutton.active) {
             return;
         }
@@ -52,7 +51,7 @@ public class GuiLanguagePacks extends ScreenBase {
             }
         } else if (guibutton.id == 6) {
             //minecraft.textureManager.reloadTexturesFromTexturePack();
-            minecraft.openScreen(guiScreen);
+            minecraft.setScreen(guiScreen);
         } else {
             guiLanguagePackSlot.buttonClicked(guibutton);
         }
@@ -69,11 +68,11 @@ public class GuiLanguagePacks extends ScreenBase {
     public void render(int i, int j, float f) {
         guiLanguagePackSlot.render(i, j, f);
         TranslationStorage stringtranslate = TranslationStorage.getInstance();
-        drawTextWithShadowCentred(textManager,
-                stringtranslate.translate("languagePack.title"), width / 2,
+        drawCenteredTextWithShadow(textRenderer,
+                stringtranslate.get("languagePack.title"), width / 2,
                 16, 0xffffff);
-        drawTextWithShadowCentred(textManager,
-                stringtranslate.translate("languagePack.folderInfo"),
+        drawCenteredTextWithShadow(textRenderer,
+                stringtranslate.get("languagePack.folderInfo"),
                 width / 2 - 77, height - 26, 0x808080);
         super.render(i, j, f);
 //		guiTexturePackSlot.registerScrollButtons(controlList, 7, 8);
@@ -81,9 +80,9 @@ public class GuiLanguagePacks extends ScreenBase {
 
     protected void keyPressed(char c, int i)
     {
-        if(i == 1 && guiScreen instanceof MainMenu)
+        if(i == 1 && guiScreen instanceof TitleScreen)
         {
-            minecraft.openScreen(guiScreen);
+            minecraft.setScreen(guiScreen);
         } else {
             super.keyPressed(c, i);
         }
@@ -99,6 +98,6 @@ public class GuiLanguagePacks extends ScreenBase {
     }
 
     static TextRenderer func_22127_j(GuiLanguagePacks guilanguagepacks) {
-        return guilanguagepacks.textManager;
+        return guilanguagepacks.textRenderer;
     }
 }
