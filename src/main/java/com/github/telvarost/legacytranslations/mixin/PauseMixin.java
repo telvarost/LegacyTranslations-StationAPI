@@ -55,14 +55,18 @@ public class PauseMixin extends ScreenBase {
         return I18n.translate("menu.options");
     }
 
+    @Inject(method = "init", at = @At("HEAD"), cancellable = true)
+    public void init_head(CallbackInfo ci) {
+        ModHelper.reloadKeys();
+    }
+
     @Inject(method = "init", at = @At("RETURN"), cancellable = true)
-    public void init(CallbackInfo ci) {
+    public void init_return(CallbackInfo ci) {
         byte byte0 = -16;
         if (!FabricLoader.getInstance().isModLoaded("modmenu")) {
             buttons.add(new Button(7, width / 2 - 100, height / 4 + 72 + byte0, 200, 20, I18n.translate(("menu.texturepacks"))));
         }
         buttons.add(new GuiButtonCustom(8, width / 2 + 104, height / 4 + 72 + byte0, 20, 20, "", true, 0));
-        ModHelper.reloadKeys();
     }
 
     @Inject(method = "buttonClicked", at = @At("RETURN"), cancellable = true)

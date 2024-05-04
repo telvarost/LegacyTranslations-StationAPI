@@ -78,11 +78,15 @@ public class MainMenuMixin extends ScreenBase {
         return stringTranslate.translate("menu.copyright");
     }
 
+    @Inject(method = "init", at = @At("HEAD"), cancellable = true)
+    public void init_head(CallbackInfo ci) {
+        ModHelper.reloadKeys();
+    }
+
     @Inject(method = "init", at = @At("RETURN"), cancellable = true)
-    public void init(CallbackInfo ci) {
+    public void init_return(CallbackInfo ci) {
         int i = this.height / 4 + 48;
         buttons.add(new GuiButtonCustom(5, width / 2 + 104, i + 48, 20, 20, I18n.translate(""), true, 0));
-        ModHelper.reloadKeys();
     }
 
     @Inject(method = "buttonClicked", at = @At("RETURN"), cancellable = true)

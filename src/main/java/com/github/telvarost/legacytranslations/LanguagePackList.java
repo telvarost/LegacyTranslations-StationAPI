@@ -13,9 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.ScreenBase;
 import net.minecraft.client.util.ScreenScaler;
+import net.modificationstation.stationapi.api.resource.language.LanguageManager;
 
 public class LanguagePackList
 {
@@ -68,6 +70,9 @@ public class LanguagePackList
         {
             selectedLanguagePack = ModHelper.ModHelperFields.langFile;
             ModHelper.ModHelperFields.langFile = availableLanguagePacks.get(k);
+            if (FabricLoader.getInstance().isModLoaded("stationapi")) {
+                LanguageManager.changeLanguage(ModHelper.ModHelperFields.langFile);
+            }
             ModHelper.reloadKeys();
             mc.options.saveOptions();
             ScreenScaler scaledresolution = new ScreenScaler(mc.options, mc.actualWidth, mc.actualHeight);
