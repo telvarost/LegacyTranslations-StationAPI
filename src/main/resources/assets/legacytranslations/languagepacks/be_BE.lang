@@ -310,7 +310,22 @@ creativeControls.gameMode.creative=Творчасць
 creativeControls.gameMode.survival=Выжыванне
 creativeControls.backToInv=Вярнуцца да інвентару
 
-
+tile.stonebrick.name=Бут
+tile.stonebrick.desc=
+tile.wood.name=Дошкі
+tile.wood.desc=
+tile.sapling.name=садженец
+tile.sapling.desc=
+tile.log.name=драўніна
+tile.log.desc=
+tile.leaves.name=лістота
+tile.leaves.desc=
+tile.goldenRail.name=Медныя электрычныя рэйкі
+tile.goldenRail.desc=
+tile.flower.name=Дзьмухавец
+tile.flower.desc=
+tile.stairsStone.name=Бутавыя прыступкі
+tile.stairsStone.desc=
 
 tile.stone.name=Камень
 tile.stone.desc=
@@ -450,7 +465,7 @@ tile.poweredRail.name=Медныя электрычныя рэйкі
 tile.poweredRail.desc=
 tile.detectorRail.name=Націскныя рэйкі
 tile.detectorRail.desc=
-tile.stairsCobblestone.name=Бутавыя прыступкі 
+tile.stairsCobblestone.name=Бутавыя прыступкі
 tile.stairsCobblestone.desc=
 tile.lever.name=Рычаг
 tile.lever.desc=

@@ -311,7 +311,22 @@ creativeControls.gameMode.creative=Творчество
 creativeControls.gameMode.survival=Оцевляне
 creativeControls.backToInv=Връщане към инвентара
 
-
+tile.stonebrick.name=Калдъръмен камък
+tile.stonebrick.desc=
+tile.wood.name=Дъски
+tile.wood.desc=
+tile.sapling.name=фиданка
+tile.sapling.desc=
+tile.log.name=дърво
+tile.log.desc=
+tile.leaves.name=листа
+tile.leaves.desc=
+tile.goldenRail.name=Медна електрическа релса
+tile.goldenRail.desc=
+tile.flower.name=Глухарче
+tile.flower.desc=
+tile.stairsStone.name=Стъпала от калдъръмен камък
+tile.stairsStone.desc=
 
 tile.stone.name=Камък
 tile.stone.desc=

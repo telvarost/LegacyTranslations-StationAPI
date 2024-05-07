@@ -309,7 +309,22 @@ creativeControls.gameMode.creative=Criativo
 creativeControls.gameMode.survival=Sobrevivência
 creativeControls.backToInv=Voltar ao Inventário
 
-
+tile.stonebrick.name=Pedregulho
+tile.stonebrick.desc=
+tile.wood.name=Tábuas de Madeira
+tile.wood.desc=
+tile.sapling.name=Muda
+tile.sapling.desc=
+tile.log.name=Madeira
+tile.log.desc=
+tile.leaves.name=Folhas
+tile.leaves.desc=
+tile.goldenRail.name=Trilho Energizado
+tile.goldenRail.desc=
+tile.flower.name=Dente-de-Leão
+tile.flower.desc=
+tile.stairsStone.name=Escadas de Pedregulho
+tile.stairsStone.desc=
 
 tile.stone.name=Pedra
 tile.stone.desc=

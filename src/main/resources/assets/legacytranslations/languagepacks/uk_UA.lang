@@ -310,7 +310,22 @@ creativeControls.gameMode.creative=Творчість
 creativeControls.gameMode.survival=Виживання
 creativeControls.backToInv=Повернутися до інвентарю
 
-
+tile.stonebrick.name=Кругляк
+tile.stonebrick.desc=
+tile.wood.name=Дубові дошки
+tile.wood.desc=
+tile.sapling.name=саджанець
+tile.sapling.desc=
+tile.log.name=деревина
+tile.log.desc=
+tile.leaves.name=листя
+tile.leaves.desc=
+tile.goldenRail.name=Електризовані рейки
+tile.goldenRail.desc=
+tile.flower.name=Кульбаба
+tile.flower.desc=
+tile.stairsStone.name=Брукові сходи
+tile.stairsStone.desc=
 
 tile.stone.name=Камінь
 tile.stone.desc=

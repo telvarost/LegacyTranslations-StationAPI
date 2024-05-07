@@ -363,7 +363,22 @@ creativeControls.gameMode.creative=Créatif
 creativeControls.gameMode.survival=Survie
 creativeControls.backToInv=Retour à l'Inventaire
 
-
+tile.stonebrick.name=Pierres
+tile.stonebrick.desc=
+tile.wood.name=Planches de chêne
+tile.wood.desc=
+tile.sapling.name=Pousse
+tile.sapling.desc=
+tile.log.name=Bûche
+tile.log.desc=
+tile.leaves.name=Feuilles
+tile.leaves.desc=
+tile.goldenRail.name=Rails de propulsion
+tile.goldenRail.desc=
+tile.flower.name=Pissenlit
+tile.flower.desc=
+tile.stairsStone.name=Escaliers en pierre
+tile.stairsStone.desc=
 
 tile.stone.name=Roche
 tile.stone.desc=

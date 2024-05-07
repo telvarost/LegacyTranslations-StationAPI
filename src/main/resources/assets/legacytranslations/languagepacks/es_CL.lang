@@ -327,7 +327,22 @@ creativeControls.gameMode.creative=Creativo
 creativeControls.gameMode.survival=Supervivencia
 creativeControls.backToInv=Volver al inventario
 
-
+tile.stonebrick.name=Roca
+tile.stonebrick.desc=
+tile.wood.name=Madera
+tile.wood.desc=
+tile.sapling.name=Arbolito
+tile.sapling.desc=
+tile.log.name=Tronco
+tile.log.desc=
+tile.leaves.name=Hojas
+tile.leaves.desc=
+tile.goldenRail.name=Riel propulsor
+tile.goldenRail.desc=
+tile.flower.name=Diente de le\u00f3n
+tile.flower.desc=
+tile.stairsStone.name=Escaleras de roca
+tile.stairsStone.desc=
 
 tile.stone.name=Piedra
 tile.stone.desc=

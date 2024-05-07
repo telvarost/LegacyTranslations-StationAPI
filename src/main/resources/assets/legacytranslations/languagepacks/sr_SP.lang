@@ -310,7 +310,22 @@ creativeControls.gameMode.creative=Стваралаштво
 creativeControls.gameMode.survival=Преживљавање
 creativeControls.backToInv=Назад у инвентар
 
-
+tile.stonebrick.name=Калдрма
+tile.stonebrick.desc=
+tile.wood.name=Даске од храстовине
+tile.wood.desc=
+tile.sapling.name=Младица
+tile.sapling.desc=
+tile.log.name=Храстовина
+tile.log.desc=
+tile.leaves.name=Лишће
+tile.leaves.desc=
+tile.goldenRail.name=Бакарни шине под напором
+tile.goldenRail.desc=
+tile.flower.name=Маслачак
+tile.flower.desc=
+tile.stairsStone.name=Степенице од калдрме
+tile.stairsStone.desc=
 
 tile.stone.name=Камен
 tile.stone.desc=
@@ -320,7 +335,7 @@ tile.dirt.name=Земља
 tile.dirt.desc=
 tile.cobblestone.name=Калдрма
 tile.cobblestone.desc=
-tile.planks.name=Даске од храстовине 
+tile.planks.name=Даске од храстовине
 tile.planks.desc=
 tile.oakSapling.name=Младица храста
 tile.oakSapling.desc=

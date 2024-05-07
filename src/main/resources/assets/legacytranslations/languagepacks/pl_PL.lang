@@ -297,7 +297,22 @@ creativeControls.gameMode.creative=Kreatywny
 creativeControls.gameMode.survival=Przetrwanie
 creativeControls.backToInv=Powrót do Ekwipunku
 
-
+tile.stonebrick.name=Bruk
+tile.stonebrick.desc=
+tile.wood.name=Drewniane Deski
+tile.wood.desc=
+tile.sapling.name=Sadzonka
+tile.sapling.desc=
+tile.log.name=Drewno
+tile.log.desc=
+tile.leaves.name=Liście
+tile.leaves.desc=
+tile.goldenRail.name=Zasilane Szyny
+tile.goldenRail.desc=
+tile.flower.name=Dmuchawiec
+tile.flower.desc=
+tile.stairsStone.name=Brukowe Schody
+tile.stairsStone.desc=
 
 tile.stone.name=Kamień
 tile.stone.desc=

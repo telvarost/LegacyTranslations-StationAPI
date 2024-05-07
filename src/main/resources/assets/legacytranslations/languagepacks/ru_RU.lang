@@ -363,7 +363,22 @@ creativeControls.gameMode.creative=Творчество
 creativeControls.gameMode.survival=Выживание
 creativeControls.backToInv=Вернуться к инвентарю
 
-
+tile.stonebrick.name=Булыжник
+tile.stonebrick.desc=
+tile.wood.name=Доски
+tile.wood.desc=
+tile.sapling.name=саженец
+tile.sapling.desc=
+tile.log.name=древесина
+tile.log.desc=
+tile.leaves.name=листва
+tile.leaves.desc=
+tile.goldenRail.name=Электрические рельсы
+tile.goldenRail.desc=
+tile.flower.name=Одуванчик
+tile.flower.desc=
+tile.stairsStone.name=Булыжные ступени
+tile.stairsStone.desc=
 
 tile.stone.name=Камень
 tile.stone.desc=

@@ -326,7 +326,22 @@ creativeControls.gameMode.creative=Kreativ
 creativeControls.gameMode.survival=\u00dcberleben
 creativeControls.backToInv=Zur\u00fcck ins Inventar
 
-
+tile.stonebrick.name=Bruchstein
+tile.stonebrick.desc=
+tile.wood.name=Holzbretter
+tile.wood.desc=
+tile.sapling.name=Setzling
+tile.sapling.desc=
+tile.log.name=Holz
+tile.log.desc=
+tile.leaves.name=Laub
+tile.leaves.desc=
+tile.goldenRail.name=Antriebsschiene
+tile.goldenRail.desc=
+tile.flower.name=Loewenzahn
+tile.flower.desc=
+tile.stairsStone.name=Bruchsteintreppe
+tile.stairsStone.desc=
 
 tile.stone.name=Stein
 tile.stone.desc=

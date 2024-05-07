@@ -367,7 +367,26 @@ creativeControls.gameMode.creative=Creative
 creativeControls.gameMode.survival=Survival
 creativeControls.backToInv=Back to Inventory
 
-
+tile.stonebrick.name=Cobblestone
+tile.stonebrick.desc=
+tile.wood.name=Wooden Planks
+tile.wood.desc=
+tile.sapling.name=Sapling
+tile.sapling.desc=
+tile.log.name=Wood
+tile.log.desc=
+tile.leaves.name=Leaves
+tile.leaves.desc=
+tile.goldenRail.name=Powered Rail
+tile.goldenRail.desc=
+tile.flower.name=Flower
+tile.flower.desc=
+tile.stairsStone.name=Stone Stairs
+tile.stairsStone.desc=
+tile.minecraft.Air.name=Air
+tile.minecraft.Air.desc=
+tile.minecraft\:Air.name=Air
+tile.minecraft\:Air.desc=
 
 tile.stone.name=Stone
 tile.stone.desc=
