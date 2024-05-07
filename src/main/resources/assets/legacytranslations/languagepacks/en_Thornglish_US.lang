@@ -1,5 +1,5 @@
 title|Thornglish [United States]
-author|Logan
+author|Logan, Telvarost
 splashes|jar:/title/splashes.txt
 
 #================================#
@@ -79,6 +79,8 @@ options.ao=Smooþ Lighting
 
 selectWorld.deleteQuestion=Are you sure you want to delete þis world?
 selectWorld.enterSeed=Seed for þe World Generator
+
+multiplayer.mojangfixstationapi.deleteConfirm1=Are you sure you want to remove þis server?
 
 stat.deaths=Number of Deaþs
 

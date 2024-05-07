@@ -1,5 +1,5 @@
 title|Português [Brasil]
-author|GioCk and Bdiacs
+author|GioCk, Bdiacs, Telvarost
 splashes|jar:/title/splashes_BR.txt
 
 game.name=New Frontier Craft
@@ -70,6 +70,7 @@ selectWorld.gmSurvival=Modo Sobrevivência
 selectWorld.gmCreative=Modo Criativo
 selectWorld.noCheats=Sem trapaças
 selectWorld.cheats=Trapaças ativadas
+selectWorld.stationapi.edit=Editar
 
 multiplayer.title=Jogar Multijogador
 multiplayer.edit=Editar
@@ -91,6 +92,25 @@ multiplayer.serverNameDefault=Servidor de NFC
 multiplayer.badPing=(sem conexão)
 multiplayer.pingTime=ms
 multiplayer.polling=Conectando...
+
+multiplayer.mojangfixstationapi.title=Jogar Multijogador
+multiplayer.mojangfixstationapi.edit=Editar
+multiplayer.mojangfixstationapi.delete=Deletar
+multiplayer.mojangfixstationapi.join=Entrar no Servidor
+multiplayer.mojangfixstationapi.directConnect=Conexão Direta
+multiplayer.mojangfixstationapi.directConnection=Conexão Direta
+multiplayer.mojangfixstationapi.addServer=Adicionar Servidor
+multiplayer.mojangfixstationapi.refresh=Atualizar
+multiplayer.mojangfixstationapi.cancel=Cancelar
+multiplayer.mojangfixstationapi.deleteConfirm1=Você tem certeza que deseja remover este servidor?
+multiplayer.mojangfixstationapi.deleteConfirm2=será perdido para sempre! (um bom tempo!)
+multiplayer.mojangfixstationapi.editServerInfo=Editar Informações do Servidor
+multiplayer.mojangfixstationapi.serverName=Nome do Servidor
+multiplayer.mojangfixstationapi.serverAddress=Endereço do Servidor
+multiplayer.mojangfixstationapi.serverNameDefault=Servidor de NFC
+multiplayer.mojangfixstationapi.badPing=(sem conexão)
+multiplayer.mojangfixstationapi.pingTime=ms
+multiplayer.mojangfixstationapi.polling=Conectando...
 
 multiplayer.status.hostError=Não foi possível achar o servidor
 multiplayer.status.cantReach=Não foi possível conectar ao servidor

@@ -1,5 +1,5 @@
 title|Русский [Россия]
-author|Birevan, Zdravich16, CMD28
+author|Birevan, Miku16, CMD28, Telvarost
 version|3500
 splashes|jar:/title/splashes_RU.txt
 bidi|false
@@ -97,7 +97,7 @@ selectWorld.gmCreative=Творческий режим
 selectWorld.noCheats=без читов
 selectWorld.cheats=читы
 selectWorld.worldsFolder=Папка миров
-
+selectWorld.stationapi.edit=Настроить
 
 multiplayer.title=Сетевая игра
 multiplayer.edit=Настроить
@@ -119,6 +119,25 @@ multiplayer.serverNameDefault=Сервер NFC
 multiplayer.badPing=(нет соединения)
 multiplayer.pingTime=мс
 multiplayer.polling=Соединение…
+
+multiplayer.mojangfixstationapi.title=Сетевая игра
+multiplayer.mojangfixstationapi.edit=Настроить
+multiplayer.mojangfixstationapi.delete=Удалить
+multiplayer.mojangfixstationapi.join=Присоединиться
+multiplayer.mojangfixstationapi.directConnect=По адресу
+multiplayer.mojangfixstationapi.directConnection=Прямое подключение
+multiplayer.mojangfixstationapi.addServer=Добавить
+multiplayer.mojangfixstationapi.refresh=Обновить
+multiplayer.mojangfixstationapi.cancel=Отмена
+multiplayer.mojangfixstationapi.deleteConfirm1=Вы действительно хотите удалить этот сервер?
+multiplayer.mojangfixstationapi.deleteConfirm2=будет потерян навсегда! (Совсем навсегда!)
+multiplayer.mojangfixstationapi.editServerInfo=Информация о сервере
+multiplayer.mojangfixstationapi.serverName=Название сервера
+multiplayer.mojangfixstationapi.serverAddress=Адрес сервера
+multiplayer.mojangfixstationapi.serverNameDefault=Сервер NFC
+multiplayer.mojangfixstationapi.badPing=(нет соединения)
+multiplayer.mojangfixstationapi.pingTime=мс
+multiplayer.mojangfixstationapi.polling=Соединение…
 
 multiplayer.status.hostError=Не удаётся определить имя хоста
 multiplayer.status.cantReach=Не удаётся связаться с сервером

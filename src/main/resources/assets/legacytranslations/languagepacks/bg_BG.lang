@@ -1,5 +1,5 @@
 title|Български [България]
-author|Zdravich16
+author|Miku16, Telvarost
 splashes|jar:/title/splashes_RU.txt
 
 game.name=New Frontier Craft
@@ -70,6 +70,7 @@ selectWorld.gmSurvival=Оцеляване
 selectWorld.gmCreative=Творчество
 selectWorld.noCheats=без измама
 selectWorld.cheats=измама
+selectWorld.stationapi.edit=Редактиране
 
 multiplayer.title=Мрежова игра
 multiplayer.edit=Редактиране
@@ -91,6 +92,25 @@ multiplayer.serverNameDefault=Cървър NFC
 multiplayer.badPing=(няма връзката)
 multiplayer.pingTime=мс
 multiplayer.polling=Връзка…
+
+multiplayer.mojangfixstationapi.title=Мрежова игра
+multiplayer.mojangfixstationapi.edit=Редактиране
+multiplayer.mojangfixstationapi.delete=Изтриване
+multiplayer.mojangfixstationapi.join=Присъединяване
+multiplayer.mojangfixstationapi.directConnect=На адрес
+multiplayer.mojangfixstationapi.directConnection=Директно свързване
+multiplayer.mojangfixstationapi.addServer=Добави сървър
+multiplayer.mojangfixstationapi.refresh=Обновяване
+multiplayer.mojangfixstationapi.cancel=Отказ
+multiplayer.mojangfixstationapi.deleteConfirm1=Сигурни ли сте, че искате да премахнете този сървър?
+multiplayer.mojangfixstationapi.deleteConfirm2=ще бъде загубен завинаги! (Напълно завинаги!)
+multiplayer.mojangfixstationapi.editServerInfo=Редактиране на информацията за сървъра
+multiplayer.mojangfixstationapi.serverName=Име на сървъра
+multiplayer.mojangfixstationapi.serverAddress=Адрес на сървъра
+multiplayer.mojangfixstationapi.serverNameDefault=Cървър NFC
+multiplayer.mojangfixstationapi.badPing=(няма връзката)
+multiplayer.mojangfixstationapi.pingTime=мс
+multiplayer.mojangfixstationapi.polling=Връзка…
 
 multiplayer.status.hostError=Грешка при преобразуването на името на хоста
 multiplayer.status.cantReach=Грешка при връзката със сървъра

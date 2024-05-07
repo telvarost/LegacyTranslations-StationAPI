@@ -1,6 +1,6 @@
 title|Deutsch [Deutschland]
-author|Wapitiii_
-splashes|jar:/title/splashes.txt								
+author|Wapitiii_, Telvarost
+splashes|jar:/title/splashes.txt
 
 #================================#
 #                                #
@@ -85,7 +85,9 @@ selectWorld.gameMode=Spielmodus
 selectWorld.gmSurvival=\u00dcberlebensmodus
 selectWorld.gmCreative=Kreativmodus
 selectWorld.noCheats=keine Cheats
-selectWorld.cheats=Cheats							  
+selectWorld.cheats=Cheats
+selectWorld.stationapi.edit=Bearbeiten
+
 multiplayer.title=Mehrspielermodus spielen
 multiplayer.edit=Bearbeiten
 multiplayer.delete=L\u00f6schen
@@ -106,6 +108,25 @@ multiplayer.serverNameDefault=NFC Server
 multiplayer.badPing=(keine Verbindung)
 multiplayer.pingTime=ms
 multiplayer.polling=Abfragen..
+
+multiplayer.mojangfixstationapi.title=Mehrspielermodus spielen
+multiplayer.mojangfixstationapi.edit=Bearbeiten
+multiplayer.mojangfixstationapi.delete=L\u00f6schen
+multiplayer.mojangfixstationapi.join=Server beitreten
+multiplayer.mojangfixstationapi.directConnect=Direktverbindung
+multiplayer.mojangfixstationapi.directConnection=Direktverbindung
+multiplayer.mojangfixstationapi.addServer=Server hinzuf\u00fcgen
+multiplayer.mojangfixstationapi.refresh=Aktualisieren
+multiplayer.mojangfixstationapi.cancel=Abbrechen
+multiplayer.mojangfixstationapi.deleteConfirm1=Bist du sicher, dass du diesen Server entfernen m\u00f6chtest?
+multiplayer.mojangfixstationapi.deleteConfirm2= wird f\u00fcr immer verloren sein! (Eine lange Zeit!)
+multiplayer.mojangfixstationapi.editServerInfo=Serverinformationen bearbeiten
+multiplayer.mojangfixstationapi.serverName=Servername
+multiplayer.mojangfixstationapi.serverAddress=Serveradresse
+multiplayer.mojangfixstationapi.serverNameDefault=NFC Server
+multiplayer.mojangfixstationapi.badPing=(keine Verbindung)
+multiplayer.mojangfixstationapi.pingTime=ms
+multiplayer.mojangfixstationapi.polling=Abfragen..
 
 multiplayer.status.hostError=Die Serveradresse konnte nicht aufgel\u00f6st werden
 multiplayer.status.cantReach=Die Verbindung zum Server kann nicht hergestellt werden.

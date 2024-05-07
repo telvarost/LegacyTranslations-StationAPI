@@ -1,5 +1,5 @@
 title|Українська [Україна]
-author|Zdravich16, Mykola1914
+author|Miku16, Mykola1914, Telvarost
 splashes|jar:/title/splashes_RU.txt
 
 game.name=New Frontier Craft
@@ -70,6 +70,7 @@ selectWorld.gmSurvival=Режим виживання
 selectWorld.gmCreative=Режим творчості
 selectWorld.noCheats=без читів
 selectWorld.cheats=з чітами
+selectWorld.stationapi.edit=Редагувати
 
 multiplayer.title=Гра в мережі
 multiplayer.edit=Редагувати
@@ -91,6 +92,25 @@ multiplayer.serverNameDefault=Сервер NFC
 multiplayer.badPing=(немає з’єднання)
 multiplayer.pingTime=мс
 multiplayer.polling=З’єднання…
+
+multiplayer.mojangfixstationapi.title=Гра в мережі
+multiplayer.mojangfixstationapi.edit=Редагувати
+multiplayer.mojangfixstationapi.delete=Видалити
+multiplayer.mojangfixstationapi.join=Приєднатися
+multiplayer.mojangfixstationapi.directConnect=За адресою
+multiplayer.mojangfixstationapi.directConnection=Пряме підключення
+multiplayer.mojangfixstationapi.addServer=Додати сервер
+multiplayer.mojangfixstationapi.refresh=Оновити
+multiplayer.mojangfixstationapi.cancel=Скасувати
+multiplayer.mojangfixstationapi.deleteConfirm1=Ви впевнені, що бажаєте видалити цей сервер?
+multiplayer.mojangfixstationapi.deleteConfirm2=буде втрачено назавжди! (Це довго!)
+multiplayer.mojangfixstationapi.editServerInfo=Редагувати інформацію про сервер
+multiplayer.mojangfixstationapi.serverName=Назва сервера
+multiplayer.mojangfixstationapi.serverAddress=Адреса сервера
+multiplayer.mojangfixstationapi.serverNameDefault=Сервер NFC
+multiplayer.mojangfixstationapi.badPing=(немає з’єднання)
+multiplayer.mojangfixstationapi.pingTime=мс
+multiplayer.mojangfixstationapi.polling=З’єднання…
 
 multiplayer.status.hostError=Не вдається визначити ім’я хоста
 multiplayer.status.cantReach=Не вдається зв’язатися з сервером

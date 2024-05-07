@@ -1,5 +1,5 @@
 title|Español [Chile]
-author|metallica5167
+author|metallica5167, Telvarost
 splashes|jar:/title/splashes_CL.txt
 
 #================================#
@@ -86,6 +86,7 @@ selectWorld.gmSurvival=Modo supervivencia
 selectWorld.gmCreative=Modo creativo
 selectWorld.noCheats=Sin trucos
 selectWorld.cheats=Con trucos
+selectWorld.stationapi.edit=Editar
 
 multiplayer.title=Jugar en multijugador
 multiplayer.edit=Editar
@@ -107,6 +108,25 @@ multiplayer.serverNameDefault=Servidor de NFC
 multiplayer.badPing=(sin conexi\u00f3n)
 multiplayer.pingTime=ms
 multiplayer.polling=Polling..
+
+multiplayer.mojangfixstationapi.title=Jugar en multijugador
+multiplayer.mojangfixstationapi.edit=Editar
+multiplayer.mojangfixstationapi.delete=Borrar
+multiplayer.mojangfixstationapi.join=Unir al servidor
+multiplayer.mojangfixstationapi.directConnect=Conexi\u00f3n directa
+multiplayer.mojangfixstationapi.directConnection=Conexi\u00f3n directa
+multiplayer.mojangfixstationapi.addServer=A\u00f1adir servidor
+multiplayer.mojangfixstationapi.refresh=Actualizar
+multiplayer.mojangfixstationapi.cancel=Cancelar
+multiplayer.mojangfixstationapi.deleteConfirm1=¿Est\u00e1s seguro que quieres borrar este servidor?
+multiplayer.mojangfixstationapi.deleteConfirm2=desaparecer\u00e1 por siempre (¡Un largo tiempo!)
+multiplayer.mojangfixstationapi.editServerInfo=Editar informaci\u00f3n del servidor
+multiplayer.mojangfixstationapi.serverName=Nombre del servidor
+multiplayer.mojangfixstationapi.serverAddress=Direcci\u00f3n del servidor
+multiplayer.mojangfixstationapi.serverNameDefault=Servidor de NFC
+multiplayer.mojangfixstationapi.badPing=(sin conexi\u00f3n)
+multiplayer.mojangfixstationapi.pingTime=ms
+multiplayer.mojangfixstationapi.polling=Polling..
 
 multiplayer.status.hostError=Nombre del host no pudo ser resuelto
 multiplayer.status.cantReach=No se pudo comunicar con el servidor

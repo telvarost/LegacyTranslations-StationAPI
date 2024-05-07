@@ -1,5 +1,5 @@
 title|Polski [Polska]
-author|Dararess
+author|Dararess, Telvarost
 splashes|jar:/title/splashes.txt
 
 game.name=New Frontier Craft
@@ -58,6 +58,7 @@ selectWorld.gmSurvival=Tryb Przetrwania
 selectWorld.gmCreative=Tryb Kreatywny
 selectWorld.noCheats=Bez Cheatów
 selectWorld.cheats=Z Cheatami
+selectWorld.stationapi.edit=Edytuj
 
 multiplayer.title=Zagraj w tryb wieloosobowy
 multiplayer.edit=Edytuj
@@ -79,6 +80,25 @@ multiplayer.serverNameDefault=Serwer NFC
 multiplayer.badPing=(brak połączenia)
 multiplayer.pingTime=ms
 multiplayer.polling=Sprawdzanie...
+
+multiplayer.mojangfixstationapi.title=Zagraj w tryb wieloosobowy
+multiplayer.mojangfixstationapi.edit=Edytuj
+multiplayer.mojangfixstationapi.delete=Usuń
+multiplayer.mojangfixstationapi.join=Dołącz do serwera
+multiplayer.mojangfixstationapi.directConnect=Połącz bezpośrednio
+multiplayer.mojangfixstationapi.directConnection=Bezpośrednie połączenie
+multiplayer.mojangfixstationapi.addServer=Dodaj Serwer
+multiplayer.mojangfixstationapi.refresh=Odśwież
+multiplayer.mojangfixstationapi.cancel=Anuluj
+multiplayer.mojangfixstationapi.deleteConfirm1=Czy jesteś pewny że chcesz usunąć ten serwer?
+multiplayer.mojangfixstationapi.deleteConfirm2=zostanie stracony na zawsze! (Na długi czas!)
+multiplayer.mojangfixstationapi.editServerInfo=Edytuj informacje o serwerze
+multiplayer.mojangfixstationapi.serverName=Nazwa serwera
+multiplayer.mojangfixstationapi.serverAddress=Adres serwera
+multiplayer.mojangfixstationapi.serverNameDefault=Serwer NFC
+multiplayer.mojangfixstationapi.badPing=(brak połączenia)
+multiplayer.mojangfixstationapi.pingTime=ms
+multiplayer.mojangfixstationapi.polling=Sprawdzanie...
 
 multiplayer.status.hostError=Niemożna rozwiązać nazwy hosta
 multiplayer.status.cantReach=Niemożna dosiągnąć serwera

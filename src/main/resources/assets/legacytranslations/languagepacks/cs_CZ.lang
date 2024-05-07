@@ -1,5 +1,5 @@
 title|Čeština [Česko]
-author|Pomi108
+author|Pomi108, Telvarost
 splashes|jar:/title/splashes_CZ.txt
 
 game.name=New Frontier Craft
@@ -68,6 +68,7 @@ selectWorld.gmSurvival=Hra o přežití
 selectWorld.gmCreative=Kreativní mód
 selectWorld.noCheats=Bez podvádění
 selectWorld.cheats=Podvádění
+selectWorld.stationapi.edit=Upravit
 
 multiplayer.title=Hrát hru více hráčů
 multiplayer.edit=Upravit
@@ -89,6 +90,25 @@ multiplayer.serverNameDefault=NFC Server
 multiplayer.badPing=(žádné připojení)
 multiplayer.pingTime=ms
 multiplayer.polling=Načítám...
+
+multiplayer.mojangfixstationapi.title=Hrát hru více hráčů
+multiplayer.mojangfixstationapi.edit=Upravit
+multiplayer.mojangfixstationapi.delete=Smazat
+multiplayer.mojangfixstationapi.join=Připojit se k serveru
+multiplayer.mojangfixstationapi.directConnect=Připojit se přímo
+multiplayer.mojangfixstationapi.directConnection=Přímé spojení
+multiplayer.mojangfixstationapi.addServer=Přidat server
+multiplayer.mojangfixstationapi.refresh=Aktualizovat
+multiplayer.mojangfixstationapi.cancel=Zrušit
+multiplayer.mojangfixstationapi.deleteConfirm1=Opravdu chceš tento server smazat?
+multiplayer.mojangfixstationapi.deleteConfirm2=bude ztracen navěky! (na hodně dlouho!)
+multiplayer.mojangfixstationapi.editServerInfo=Upravit informace serveru
+multiplayer.mojangfixstationapi.serverName=Jméno serveru
+multiplayer.mojangfixstationapi.serverAddress=Adresa serveru
+multiplayer.mojangfixstationapi.serverNameDefault=NFC Server
+multiplayer.mojangfixstationapi.badPing=(žádné připojení)
+multiplayer.mojangfixstationapi.pingTime=ms
+multiplayer.mojangfixstationapi.polling=Načítám...
 
 multiplayer.status.hostError=Neplatný název hostitele
 multiplayer.status.cantReach=Server je nedosažitelný

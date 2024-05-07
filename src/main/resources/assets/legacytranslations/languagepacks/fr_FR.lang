@@ -1,5 +1,5 @@
 title|Français [France]
-author|Mojang, nocturni, Thierry05
+author|Mojang, nocturni, Thierry05, Telvarost
 version|3500
 splashes|jar:/title/splashes.txt
 bidi|false
@@ -96,6 +96,7 @@ selectWorld.gmCreative=Mode Créatif
 selectWorld.gmCreative=Mode Hardcore
 selectWorld.noCheats=Aucune triche
 selectWorld.cheats=Triche
+selectWorld.stationapi.edit=Modifier
 
 multiplayer.title=Multijoueur
 multiplayer.edit=Modifier
@@ -117,6 +118,25 @@ multiplayer.serverNameDefault=Serveur NFC
 multiplayer.badPing=(aucune connection)
 multiplayer.pingTime=ms
 multiplayer.polling=Ping en cours...
+
+multiplayer.mojangfixstationapi.title=Multijoueur
+multiplayer.mojangfixstationapi.edit=Modifier
+multiplayer.mojangfixstationapi.delete=Supprimer
+multiplayer.mojangfixstationapi.join=Rejoindre
+multiplayer.mojangfixstationapi.directConnect=Connexion rapide
+multiplayer.mojangfixstationapi.directConnection=Connexion rapide
+multiplayer.mojangfixstationapi.addServer=Nouveau serveur
+multiplayer.mojangfixstationapi.refresh=Actualiser
+multiplayer.mojangfixstationapi.cancel=Annuler
+multiplayer.mojangfixstationapi.deleteConfirm1=Êtes-vous sûr de vouloir supprimer ce serveur ?
+multiplayer.mojangfixstationapi.deleteConfirm2=sera perdu pour toujours ! (Très longtemps !)
+multiplayer.mojangfixstationapi.editServerInfo=Modification des informations du serveur
+multiplayer.mojangfixstationapi.serverName=Nom du serveur
+multiplayer.mojangfixstationapi.serverAddress=Adresse du serveur
+multiplayer.mojangfixstationapi.serverNameDefault=Serveur NFC
+multiplayer.mojangfixstationapi.badPing=(aucune connection)
+multiplayer.mojangfixstationapi.pingTime=ms
+multiplayer.mojangfixstationapi.polling=Ping en cours...
 
 multiplayer.status.hostError=Ne peut pas résoudre l'hôte
 multiplayer.status.cantReach=Impossible de se connecter au serveur

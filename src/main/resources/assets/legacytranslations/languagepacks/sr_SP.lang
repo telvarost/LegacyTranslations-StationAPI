@@ -1,5 +1,5 @@
 title|Српски [Србија]
-author|Zdravich16
+author|Miku16, Telvarost
 splashes|jar:/title/splashes_RU.txt
 
 game.name=New Frontier Craft
@@ -70,6 +70,7 @@ selectWorld.gmSurvival=Преживљавање
 selectWorld.gmCreative=Стваралаштво
 selectWorld.noCheats=дозволи варање
 selectWorld.cheats=варање
+selectWorld.stationapi.edit=Измени
 
 multiplayer.title=Мрежна игра
 multiplayer.edit=Измени
@@ -91,6 +92,25 @@ multiplayer.serverNameDefault=Сервер NFC
 multiplayer.badPing=(повезивање није успело)
 multiplayer.pingTime=мс
 multiplayer.polling=Повезивање…
+
+multiplayer.mojangfixstationapi.title=Мрежна игра
+multiplayer.mojangfixstationapi.edit=Измени
+multiplayer.mojangfixstationapi.delete=Избриши
+multiplayer.mojangfixstationapi.join=Придружити
+multiplayer.mojangfixstationapi.directConnect=По адреси
+multiplayer.mojangfixstationapi.directConnection=Директна веза
+multiplayer.mojangfixstationapi.addServer=Додајте сервер
+multiplayer.mojangfixstationapi.refresh=Освежи
+multiplayer.mojangfixstationapi.cancel=Откажи
+multiplayer.mojangfixstationapi.deleteConfirm1=Да ли заиста желите избришете овај сервер?
+multiplayer.mojangfixstationapi.deleteConfirm2=заувек ће бити изгубљен! (Потпуно заувек!)
+multiplayer.mojangfixstationapi.editServerInfo=Променити детаље сервера
+multiplayer.mojangfixstationapi.serverName=Име сервера
+multiplayer.mojangfixstationapi.serverAddress=Адреса сервера
+multiplayer.mojangfixstationapi.serverNameDefault=Сервер NFC
+multiplayer.mojangfixstationapi.badPing=(повезивање није успело)
+multiplayer.mojangfixstationapi.pingTime=мс
+multiplayer.mojangfixstationapi.polling=Повезивање…
 
 multiplayer.status.hostError=Није могуће дефинисати име домаћина
 multiplayer.status.cantReach=Није могуће да се повежем са сервером

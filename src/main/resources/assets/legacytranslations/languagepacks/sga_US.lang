@@ -1,5 +1,5 @@
 title|   
-author|  
+author|  , Telvarost
 splashes|jar:/title/splashes.txt
 
 game.name=  
@@ -70,6 +70,7 @@ selectWorld.gmSurvival= 
 selectWorld.gmCreative= 
 selectWorld.noCheats= 
 selectWorld.cheats=
+selectWorld.stationapi.edit=
 
 multiplayer.title= 
 multiplayer.edit=
@@ -91,6 +92,25 @@ multiplayer.serverNameDefault= 
 multiplayer.badPing=( )
 multiplayer.pingTime=
 multiplayer.polling=
+
+multiplayer.mojangfixstationapi.title= 
+multiplayer.mojangfixstationapi.edit=
+multiplayer.mojangfixstationapi.delete=
+multiplayer.mojangfixstationapi.join= 
+multiplayer.mojangfixstationapi.directConnect= 
+multiplayer.mojangfixstationapi.directConnection= 
+multiplayer.mojangfixstationapi.addServer= 
+multiplayer.mojangfixstationapi.refresh=
+multiplayer.mojangfixstationapi.cancel=
+multiplayer.mojangfixstationapi.deleteConfirm1=        
+multiplayer.mojangfixstationapi.deleteConfirm2=   ! (  !)
+multiplayer.mojangfixstationapi.editServerInfo=  
+multiplayer.mojangfixstationapi.serverName= 
+multiplayer.mojangfixstationapi.serverAddress= 
+multiplayer.mojangfixstationapi.serverNameDefault= 
+multiplayer.mojangfixstationapi.badPing=( )
+multiplayer.mojangfixstationapi.pingTime=
+multiplayer.mojangfixstationapi.polling=
 
 multiplayer.status.hostError=  
 multiplayer.status.cantReach=  
