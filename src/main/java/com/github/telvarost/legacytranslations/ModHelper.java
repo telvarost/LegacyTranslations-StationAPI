@@ -2,10 +2,9 @@ package com.github.telvarost.legacytranslations;
 
 import com.github.telvarost.legacytranslations.mixin.TranslationStorageAccessor;
 import net.minecraft.client.resource.language.TranslationStorage;
-import org.spongepowered.asm.mixin.Unique;
 
 import java.io.*;
-import java.util.Properties;
+import java.util.HashSet;
 
 public class ModHelper {
 
@@ -98,6 +97,9 @@ public class ModHelper {
     }
 
     public static class ModHelperFields {
-        public static String langFile;
+        public static String langFile = "en_US";
+        public static HashSet<String> keysWithoutTranslations = new HashSet<String>();
+        public static Boolean outputMissingKeysConsole = true;
+        public static Boolean outputMissingKeysFile = true;
     }
 }
