@@ -8,7 +8,9 @@ import com.github.telvarost.legacytranslations.ModHelper;
 import com.github.telvarost.legacytranslations.TranslationFixHook;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.resource.language.TranslationStorage;
+import net.modificationstation.stationapi.api.client.resource.ReloadScreenManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -38,7 +40,12 @@ public class TranslationStorageMixin {
             cancellable = true
     )
     public void get(String key, CallbackInfoReturnable<String> cir) {
-        if (ModHelper.ModHelperFields.outputMissingKeysConsole || ModHelper.ModHelperFields.outputMissingKeysFile) {
+        if (  !ModHelper.ModHelperFields.reloadingKeys
+           && (  ModHelper.ModHelperFields.outputMissingKeysConsole
+              || ModHelper.ModHelperFields.outputMissingKeysFile
+              )
+           && !(FabricLoader.getInstance().isModLoaded("stationapi") && ReloadScreenManager.isReloadStarted())
+        ) {
             if (null != key && !key.isBlank() && !ModHelper.ModHelperFields.keysWithoutTranslations.contains(key)) {
                 String translatedString = this.translations.getProperty(key, key);
                 if (key.equals(translatedString)) {
@@ -65,7 +72,12 @@ public class TranslationStorageMixin {
     )
     public String get(Properties instance, String key, String defaultValue) {
         String translatedString = instance.getProperty(key, defaultValue);
-        if (ModHelper.ModHelperFields.outputMissingKeysConsole || ModHelper.ModHelperFields.outputMissingKeysFile) {
+        if (  !ModHelper.ModHelperFields.reloadingKeys
+           && (  ModHelper.ModHelperFields.outputMissingKeysConsole
+              || ModHelper.ModHelperFields.outputMissingKeysFile
+              )
+           && !(FabricLoader.getInstance().isModLoaded("stationapi") && ReloadScreenManager.isReloadStarted())
+        ) {
             if (null != key && !key.isBlank() && !ModHelper.ModHelperFields.keysWithoutTranslations.contains(key)) {
                 if (key.equals(translatedString)) {
                     ModHelper.ModHelperFields.keysWithoutTranslations.add(key);
@@ -83,30 +95,35 @@ public class TranslationStorageMixin {
         return translatedString;
     }
 
-    @Environment(EnvType.CLIENT)
-    @Inject(
-            method = "get(Ljava/lang/String;)Ljava/lang/String;",
-            at = @At("HEAD"),
-            cancellable = true
-    )
-    public void getClientTranslation(String key, CallbackInfoReturnable<String> cir) {
-        if (ModHelper.ModHelperFields.outputMissingKeysConsole || ModHelper.ModHelperFields.outputMissingKeysFile) {
-            if (null != key && !key.isBlank() && !ModHelper.ModHelperFields.keysWithoutTranslations.contains(key)) {
-                String translatedString = this.translations.getProperty(key + ".name", key);
-                if (key.equals(translatedString)) {
-                    ModHelper.ModHelperFields.keysWithoutTranslations.add(key);
-
-                    if (ModHelper.ModHelperFields.outputMissingKeysConsole) {
-                        System.out.println(ModHelper.ModHelperFields.langFile + " Missing: " + key);
-                    }
-
-                    if (ModHelper.ModHelperFields.outputMissingKeysFile) {
-                        writeMissingTranslationToFile(key);
-                    }
-                }
-            }
-        }
-    }
+//    @Environment(EnvType.CLIENT)
+//    @Inject(
+//            method = "get(Ljava/lang/String;)Ljava/lang/String;",
+//            at = @At("HEAD"),
+//            cancellable = true
+//    )
+//    public void getClientTranslation(String key, CallbackInfoReturnable<String> cir) {
+//        if (  !ModHelper.ModHelperFields.reloadingKeys
+//           && (  ModHelper.ModHelperFields.outputMissingKeysConsole
+//              || ModHelper.ModHelperFields.outputMissingKeysFile
+//              )
+//              && !(FabricLoader.getInstance().isModLoaded("stationapi") && ReloadScreenManager.isReloadStarted())
+//        ) {
+//            if (null != key && !key.isBlank() && !ModHelper.ModHelperFields.keysWithoutTranslations.contains(key)) {
+//                String translatedString = this.translations.getProperty(key + ".name", key);
+//                if (key.equals(translatedString)) {
+//                    ModHelper.ModHelperFields.keysWithoutTranslations.add(key);
+//
+//                    if (ModHelper.ModHelperFields.outputMissingKeysConsole) {
+//                        System.out.println(ModHelper.ModHelperFields.langFile + " Missing: " + key);
+//                    }
+//
+//                    if (ModHelper.ModHelperFields.outputMissingKeysFile) {
+//                        writeMissingTranslationToFile(key);
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     @Unique
     private void writeMissingTranslationToFile(String missingKey) {
