@@ -63,17 +63,18 @@ public class LanguagePackList
      */
     public boolean setLanguagePack(Screen screen, int k) throws FileNotFoundException
     {
-        if(ModHelper.ModHelperFields.langFile == availableLanguagePacks.get(k))
-        {
+        if (ModHelper.ModHelperFields.langFile == availableLanguagePacks.get(k)) {
             return false;
-        } else
-        {
+        } else {
             selectedLanguagePack = ModHelper.ModHelperFields.langFile;
             ModHelper.ModHelperFields.langFile = availableLanguagePacks.get(k);
             if (FabricLoader.getInstance().isModLoaded("stationapi")) {
+                ModHelper.ModHelperFields.reloadingKeys = true;
                 LanguageManager.changeLanguage(ModHelper.ModHelperFields.langFile);
+                ModHelper.ModHelperFields.reloadingKeys = false;
             }
             ModHelper.reloadKeys();
+            ModHelper.ModHelperFields.keysWithoutTranslations.clear();
             mc.options.save();
             class_564 scaledresolution = new class_564(mc.options, mc.displayWidth, mc.displayHeight);
             int i = scaledresolution.method_1857();
