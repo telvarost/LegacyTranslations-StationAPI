@@ -2,10 +2,9 @@ package com.github.telvarost.legacytranslations;
 
 import com.github.telvarost.legacytranslations.mixin.TranslationStorageAccessor;
 import net.minecraft.client.resource.language.TranslationStorage;
-import org.spongepowered.asm.mixin.Unique;
 
 import java.io.*;
-import java.util.Properties;
+import java.util.HashSet;
 
 public class ModHelper {
 
@@ -16,8 +15,10 @@ public class ModHelper {
         if (null == TranslationStorage.getInstance()) {
             return;
         }
+
         try
         {
+            ModHelper.ModHelperFields.reloadingKeys = true;
             ((TranslationStorageAccessor) TranslationStorage.getInstance()).getTranslations().load(new InputStreamReader((TranslationStorage.class).getResourceAsStream("/assets/legacytranslations/lang/en_US.lang"), "UTF-8"));
             System.out.println("Loading \"en_US\" lang table...");
             File settings = new File("options.txt");
@@ -92,12 +93,17 @@ public class ModHelper {
                 ModHelper.ModHelperFields.langFile = "en_US";
                 //reader2 = new InputStreamReader((TranslationStorage.class).getResourceAsStream("/lang/" + ModHelper.ModHelperFields.langFile + ".lang"), "UTF-8");
             }
+            ModHelper.ModHelperFields.reloadingKeys = false;
         } catch(IOException ioexception) {
             ioexception.printStackTrace();
         }
     }
 
     public static class ModHelperFields {
-        public static String langFile;
+        public static String langFile = "en_US";
+        public static Boolean reloadingKeys = true;
+        public static HashSet<String> keysWithoutTranslations = new HashSet<String>();
+        public static Boolean outputMissingKeysConsole = true;
+        public static Boolean outputMissingKeysFile = true;
     }
 }
