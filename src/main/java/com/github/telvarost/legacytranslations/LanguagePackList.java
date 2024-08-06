@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.class_564;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.ScreenScaler;
 import net.modificationstation.stationapi.api.resource.language.LanguageManager;
 
 public class LanguagePackList
@@ -76,9 +76,9 @@ public class LanguagePackList
             ModHelper.reloadKeys();
             ModHelper.ModHelperFields.keysWithoutTranslations.clear();
             mc.options.save();
-            class_564 scaledresolution = new class_564(mc.options, mc.displayWidth, mc.displayHeight);
-            int i = scaledresolution.method_1857();
-            int j = scaledresolution.method_1858();
+            ScreenScaler scaledresolution = new ScreenScaler(mc.options, mc.displayWidth, mc.displayHeight);
+            int i = scaledresolution.getScaledWidth();
+            int j = scaledresolution.getScaledHeight();
             screen.init(mc, i, j);
             return true;
         }
