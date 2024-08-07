@@ -74,12 +74,18 @@ public class LanguagePackList
                 ModHelper.ModHelperFields.reloadingKeys = false;
             }
             ModHelper.reloadKeys();
+            //screen.textRenderer.setBidiFlag(StringTranslate.useBidi); // NEW
             ModHelper.ModHelperFields.keysWithoutTranslations.clear();
             mc.options.save();
-            ScreenScaler scaledresolution = new ScreenScaler(mc.options, mc.displayWidth, mc.displayHeight);
-            int i = scaledresolution.getScaledWidth();
-            int j = scaledresolution.getScaledHeight();
-            screen.init(mc, i, j);
+//            ScreenScaler scaledresolution = new ScreenScaler(mc.options, mc.displayWidth, mc.displayHeight);
+//            int i = scaledresolution.getScaledWidth();
+//            int j = scaledresolution.getScaledHeight();
+//            screen.init(mc, i, j);
+            // NEW: The 4 below lines
+//            screen.controlList.set(0, new GuiSmallButton(5, screen.width / 2 - 154, screen.height - 48,
+//                    StringTranslate.getInstance().translateKey("languagePack.openFolder")));
+//            screen.controlList.set(1, new GuiSmallButton(6, screen.width / 2 + 4, screen.height - 48,
+//                    StringTranslate.getInstance().translateKey("gui.done")));
             return true;
         }
     }
