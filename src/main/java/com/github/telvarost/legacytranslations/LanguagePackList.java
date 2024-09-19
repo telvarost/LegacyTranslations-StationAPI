@@ -62,10 +62,11 @@ public class LanguagePackList
      */
     public boolean setLanguagePack(Screen screen, int k) throws FileNotFoundException
     {
-        if(ModHelper.ModHelperFields.langFile == availableLanguagePacks.get(k))
+        if (ModHelper.ModHelperFields.langFile == availableLanguagePacks.get(k))
         {
             return false;
-        } else
+        }
+        else
         {
             selectedLanguagePack = ModHelper.ModHelperFields.langFile;
             ModHelper.ModHelperFields.langFile = availableLanguagePacks.get(k);
@@ -103,7 +104,7 @@ public class LanguagePackList
             for (int j = 0; j < i; j++)
             {
                 File file = afile1[j];
-                if(file == null) continue;
+                if (file == null) continue;
 
                 if (file.getName().toLowerCase().endsWith(".lang"))
                 {
